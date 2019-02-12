@@ -14,7 +14,14 @@
       "USE_OPENCL": "OFF"
     }
   }, 
-  "deps": {}, 
+  "deps": {
+    "scons": {
+      "local": "yes",
+      "name": "Scons",
+      "sort": 10,
+      "tags": "tool,scons"
+    }
+  },
   "end_full_path_universal": "src$#sep#$build$#sep#$libarm_compute$#file_ext_dll#$", 
   "need_cpu_info": "yes", 
   "only_for_host_os_tags": [
