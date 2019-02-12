@@ -9,6 +9,7 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/Arm-software/armnn", 
+      "USE_NEON": "OFF",
       "USE_OPENCL": "OFF"
     }, 
     "use_git_revision": "yes", 
@@ -49,14 +50,35 @@
       "sort": 30, 
       "tags": "tensorflow,source"
     },
-    "lib-armcl-opencl": {
+    "lib-armcl-neon": {
       "enable_if_env": {
-        "USE_OPENCL": "ON"
+            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
+            "USE_OPENCL": ["off", "OFF", "no", "NO", "0"]
       },
       "local": "yes",
-      "name": "ARM Compute Library",
+      "name": "ARM Compute Library with NEON support",
       "sort": 40,
-      "tags": "lib,armcl"
+      "tags": "lib,armcl,vneon"
+    },
+    "lib-armcl-opencl": {
+      "enable_if_env": {
+            "USE_NEON": ["off", "OFF", "no", "NO", "0"],
+            "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
+      },
+      "local": "yes",
+      "name": "ARM Compute Library with OPENCL support",
+      "sort": 40,
+      "tags": "lib,armcl,vopencl"
+    },
+    "lib-armcl-neon-opencl": {
+      "enable_if_env": {
+            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
+            "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
+      },
+      "local": "yes",
+      "name": "ARM Compute Library with NEON and OPENCL support",
+      "sort": 40,
+      "tags": "lib,armcl,vneon,vopencl"
     },
     "compiler": {
       "local": "yes",
