@@ -2,11 +2,11 @@
 
 ## Summary
 
-Frontend/backend | Reference | Neon | OpenCL | Neon, OpenCL |
+Frontends/backends                            | Reference      | Neon                         | OpenCL                         | Neon, OpenCL                                 |
 -|-|-|-|-|
-[TF](https://www.tensorflow.org/)         | (default)      |                 `USE_NEON=1` |                 `USE_OPENCL=1` |                 `USE_NEON=1`, `USE_OPENCL=1` |
-[TFLite](https://www.tensorflow.org/lite) | `USE_TFLITE=1` | `USE_TFLITE=1`, `USE_NEON=1` | `USE_TFLITE=1`, `USE_OPENCL=1` | `USE_TFLITE=1`, `USE_NEON=1`, `USE_OPENCL=1` |
-[ONNX](https://onnx.ai/)                  | N/A            | N/A                          | N/A                            | N/A                                          |
+[TF](https://www.tensorflow.org/)             | (default)      |                 `USE_NEON=1` |                 `USE_OPENCL=1` |                 `USE_NEON=1`, `USE_OPENCL=1` |
+TF, [TFLite](https://www.tensorflow.org/lite) | `USE_TFLITE=1` | `USE_TFLITE=1`, `USE_NEON=1` | `USE_TFLITE=1`, `USE_OPENCL=1` | `USE_TFLITE=1`, `USE_NEON=1`, `USE_OPENCL=1` |
+[ONNX](https://onnx.ai/)                      | N/A            | N/A                          | N/A                            | N/A                                          |
 
 **NB:** Currently, following these instructions in order is important. Otherwise, CK will try to reuse environments, which will screw them up.
 
@@ -22,7 +22,7 @@ Frontend/backend | Reference | Neon | OpenCL | Neon, OpenCL |
 
 
 <a name="tf"></a>
-## Frontend: TensorFlow
+## Frontend: TF
 
 <a name="tf_ref"></a>
 ### Backend: Reference
