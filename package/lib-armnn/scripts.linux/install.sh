@@ -37,10 +37,17 @@ ${ARMNN_SOURCE_DIR}/scripts/generate_tensorflow_protobuf.sh ${TF_PB_DIR} ${CK_EN
 
 ############################################################
 echo ""
-echo "Running cmake for ArmNN with USE_OPENCL='${USE_OPENCL}' ..."
+echo "Running cmake for ArmNN with USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}' ..."
 echo ""
 
-if [ "$USE_OPENCL" == "ON" ] || [ "$USE_OPENCL" == "on" ] || [ "$USE_OPENCL" == "1" ]
+if [ "$USE_NEON" == "YES" ] || [ "$USE_NEON" == "yes" ] || [ "$USE_NEON" == "ON" ] || [ "$USE_NEON" == "on" ] || [ "$USE_NEON" == "1" ]
+then
+    NUMERIC_USE_NEON=1
+else
+    NUMERIC_USE_NEON=0
+fi
+
+if [ "$USE_OPENCL" == "YES" ] || [ "$USE_OPENCL" == "yes" ] || [ "$USE_OPENCL" == "ON" ] || [ "$USE_OPENCL" == "on" ] || [ "$USE_OPENCL" == "1" ]
 then
     NUMERIC_USE_OPENCL=1
 else
@@ -51,6 +58,14 @@ rm -rf "${ARMNN_BUILD_DIR}"
 mkdir ${ARMNN_BUILD_DIR}
 cd ${ARMNN_BUILD_DIR}
 cmake ${ARMNN_SOURCE_DIR} \
+    -DCMAKE_C_COMPILER="${CK_CC_PATH_FOR_CMAKE}" \
+    -DCMAKE_C_FLAGS="${CK_CC_FLAGS_FOR_CMAKE} ${EXTRA_FLAGS}" \
+    -DCMAKE_CXX_COMPILER="${CK_CXX_PATH_FOR_CMAKE}" \
+    -DCMAKE_CXX_FLAGS="${CK_CXX_FLAGS_FOR_CMAKE} ${EXTRA_FLAGS} ${CK_CXX_COMPILER_STDLIB}" \
+    -DCMAKE_AR="${CK_AR_PATH_FOR_CMAKE}" \
+    -DCMAKE_RANLIB="${CK_RANLIB_PATH_FOR_CMAKE}" \
+    -DCMAKE_LINKER="${CK_LD_PATH_FOR_CMAKE}" \
+    -DARMCOMPUTENEON=${NUMERIC_USE_NEON} \
     -DARMCOMPUTECL=${NUMERIC_USE_OPENCL} \
     -DARMCOMPUTE_ROOT=${CK_ENV_LIB_ARMCL} \
     -DARMCOMPUTE_BUILD_DIR=${CK_ENV_LIB_ARMCL}/build \

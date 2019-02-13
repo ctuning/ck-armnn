@@ -9,21 +9,13 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/Arm-software/armnn", 
+      "USE_NEON": "OFF",
       "USE_OPENCL": "OFF"
     }, 
     "use_git_revision": "yes", 
     "version": "default"
   }, 
   "deps": {
-    "lib-armcl-opencl": {
-      "enable_if_env": {
-        "USE_OPENCL": "ON"
-      }, 
-      "local": "yes", 
-      "name": "ARM Compute Library", 
-      "sort": 40, 
-      "tags": "lib,armcl"
-    }, 
     "lib-boost": {
       "local": "yes", 
       "name": "Boost library", 
@@ -57,6 +49,42 @@
       "name": "Tensorflow source", 
       "sort": 30, 
       "tags": "tensorflow,source"
+    },
+    "lib-armcl-neon": {
+      "enable_if_env": {
+            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
+            "USE_OPENCL": ["off", "OFF", "no", "NO", "0"]
+      },
+      "local": "yes",
+      "name": "ARM Compute Library with NEON support",
+      "sort": 40,
+      "tags": "lib,armcl,vneon"
+    },
+    "lib-armcl-opencl": {
+      "enable_if_env": {
+            "USE_NEON": ["off", "OFF", "no", "NO", "0"],
+            "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
+      },
+      "local": "yes",
+      "name": "ARM Compute Library with OPENCL support",
+      "sort": 40,
+      "tags": "lib,armcl,vopencl"
+    },
+    "lib-armcl-neon-opencl": {
+      "enable_if_env": {
+            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
+            "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
+      },
+      "local": "yes",
+      "name": "ARM Compute Library with NEON and OPENCL support",
+      "sort": 40,
+      "tags": "lib,armcl,vneon,vopencl"
+    },
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 50,
+      "tags": "compiler,lang-cpp"
     }
   }, 
   "end_full_path_universal": "install$#sep#$lib$#sep#$libarmnn$#file_ext_dll#$", 
@@ -74,6 +102,10 @@
     "lib", 
     "armnn"
   ], 
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  },
   "use_scripts_from_another_entry": {
     "data_uoa": "download-and-install-package", 
     "module_uoa": "script"
