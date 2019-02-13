@@ -10,7 +10,8 @@
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
       "USE_NEON": "OFF",
-      "USE_OPENCL": "OFF"
+      "USE_OPENCL": "OFF",
+      "USE_TFLITE": "OFF"
     }, 
     "use_git_revision": "yes", 
     "version": "default"
@@ -80,10 +81,19 @@
       "sort": 40,
       "tags": "lib,armcl,vneon,vopencl"
     },
+    "lib-flatbuffers": {
+      "enable_if_env": {
+        "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
+      },
+      "local": "yes",
+      "name": "Google FlatBuffers library",
+      "sort": 50,
+      "tags": "lib,flatbuffers"
+    },
     "compiler": {
       "local": "yes",
       "name": "C++ compiler",
-      "sort": 50,
+      "sort": 60,
       "tags": "compiler,lang-cpp"
     }
   }, 
