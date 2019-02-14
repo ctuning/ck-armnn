@@ -25,7 +25,7 @@ $ ck install package --tags=lib,armnn \
 Install a package providing dataset and model files:
 
 ```
-ck install package --tags=armnn,dataset,model
+$ ck install package --tags=armnn,dataset,model
 ```
 
 ## Compile
@@ -39,7 +39,7 @@ $ ck compile program:mnist-armnn-tf
 ```
 $ ck run program:mnist-armnn-tf --env.CK_FILE_NUMBER=0 --env.CK_BACKEND="CpuRef"
 ```
-Here:
+**Here:**
  - CK_FILE_NUMBER - file number in dataset
  - CK_BACKEND - type of backend
    - CpuRef - default
