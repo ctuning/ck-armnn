@@ -9,9 +9,11 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
-      "USE_NEON": "OFF",
-      "USE_OPENCL": "OFF",
-      "USE_TFLITE": "OFF"
+      "USE_NEON": "NO",
+      "USE_OPENCL": "NO",
+      "USE_TF": "YES",
+      "USE_TFLITE": "NO",
+      "USE_ONNX": "NO"
     }, 
     "use_git_revision": "yes", 
     "version": "default"
@@ -46,6 +48,14 @@
       ]
     }, 
     "tensorflow-source": {
+      "enable_if_env": [
+        {
+            "USE_TF": ["on", "ON", "yes", "YES", "1"]
+        },
+        {
+            "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
+        }
+      ],
       "local": "yes", 
       "name": "Tensorflow source", 
       "sort": 30, 
