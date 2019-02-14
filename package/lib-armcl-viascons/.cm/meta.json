@@ -17,7 +17,7 @@
   "deps": {
     "scons": {
       "local": "yes",
-      "name": "Scons",
+      "name": "SCons tool",
       "sort": 10,
       "tags": "tool,scons"
     }
