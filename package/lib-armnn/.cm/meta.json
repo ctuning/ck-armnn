@@ -11,7 +11,7 @@
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO",
-      "USE_TF": "YES",
+      "USE_TF": "NO",
       "USE_TFLITE": "NO",
       "USE_ONNX": "NO"
     }, 
