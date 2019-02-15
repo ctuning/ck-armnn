@@ -35,7 +35,10 @@ Frontends/backends                            | Reference      | Neon           
 <a name="tf_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn,vtf --env.USE_TF=1
+$ ck install package --tags=lib,armnn \
+--env.USE_TF=1 \
+--extra_tags=vtf \
+--extra_version=-tf
 ```
 
 <a name="tf_neon"></a>
@@ -46,11 +49,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vneon \
 --extra_path=-neon
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_TF=1 \
 --env.USE_NEON=1 \
---extra_tags=vneon \
---extra_version=-neon
+--extra_tags=vtf,vneon \
+--extra_version=-tf-neon
 ```
 
 <a name="tf_opencl"></a>
@@ -61,11 +64,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vopencl \
 --extra_path=-opencl
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_TF=1 \
 --env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_version=-opencl
+--extra_tags=vtf,vopencl \
+--extra_version=-tf-opencl
 ```
 
 <a name="tf_neon_opencl"></a>
@@ -79,8 +82,8 @@ $ ck install package --tags=lib,armcl,viascons \
 $ ck install package --tags=lib,armnn \
 --env.USE_TF=1 \
 --env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_version=-neon-opencl
+--extra_tags=vtf,vneon,vopencl \
+--extra_version=-tf-neon-opencl
 ```
 
 
@@ -90,7 +93,10 @@ $ ck install package --tags=lib,armnn \
 <a name="tflite_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn,vtf --env.USE_TFLITE=1
+$ ck install package --tags=lib,armnn \
+--env.USE_TFLITE=1 \
+--extra_tags=vtflite \
+--extra_version=-tflite
 ```
 
 <a name="tflite_neon"></a>
@@ -101,11 +107,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vneon \
 --extra_path=-neon
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_TFLITE=1 \
 --env.USE_NEON=1 \
---extra_tags=vneon \
---extra_version=-neon
+--extra_tags=vtflite,vneon \
+--extra_version=-tflite-neon
 ```
 
 <a name="tflite_opencl"></a>
@@ -116,11 +122,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vopencl \
 --extra_path=-opencl
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_TFLITE=1 \
 --env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_version=-opencl
+--extra_tags=vtflite,vopencl \
+--extra_version=-tflite-opencl
 ```
 
 <a name="tflite_neon_opencl"></a>
@@ -134,8 +140,8 @@ $ ck install package --tags=lib,armcl,viascons \
 $ ck install package --tags=lib,armnn \
 --env.USE_TFLITE=1 \
 --env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_version=-neon-opencl
+--extra_tags=vtflite,vneon,vopencl \
+--extra_version=-tflite-neon-opencl
 ```
 
 
@@ -145,7 +151,10 @@ $ ck install package --tags=lib,armnn \
 <a name="onnx_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn,vtf --env.USE_ONNX=1
+$ ck install package --tags=lib,armnn \
+--env.USE_ONNX=1 \
+--extra_tags=vonnx \
+--extra_version=-tonnx
 ```
 
 <a name="onnx_neon"></a>
@@ -156,11 +165,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vneon \
 --extra_path=-neon
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_ONNX=1 \
 --env.USE_NEON=1 \
---extra_tags=vneon \
---extra_version=-neon
+--extra_tags=vonnx,vneon \
+--extra_version=-onnx-neon
 ```
 
 <a name="onnx_opencl"></a>
@@ -171,11 +180,11 @@ $ ck install package --tags=lib,armcl,viascons \
 --extra_tags=vopencl \
 --extra_path=-opencl
 
-$ ck install package --tags=lib,armnn,vtf \
+$ ck install package --tags=lib,armnn \
 --env.USE_ONNX=1 \
 --env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_version=-opencl
+--extra_tags=vonnx,vopencl \
+--extra_version=-onnx-opencl
 ```
 
 <a name="onnx_neon_opencl"></a>
@@ -189,7 +198,7 @@ $ ck install package --tags=lib,armcl,viascons \
 $ ck install package --tags=lib,armnn \
 --env.USE_ONNX=1 \
 --env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_version=-neon-opencl
+--extra_tags=vonnx,vneon,vopencl \
+--extra_version=-onnx-neon-opencl
 ```
 
