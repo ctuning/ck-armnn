@@ -9,7 +9,7 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SKIP_LINUX_MAKE": "YES", 
       "PACKAGE_SUB_DIR": "src", 
-      "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
+      "PACKAGE_URL": "https://review.mlplatform.org/ml/ComputeLibrary",
       "USE_NEON": "OFF", 
       "USE_OPENCL": "OFF"
     }
@@ -32,7 +32,7 @@
   ], 
   "process_script": "install", 
   "soft_uoa": "lib.armcl", 
-  "suggested_path": "lib-armcl", 
+  "suggested_path": "lib-armcl-dev",
   "tags": [
     "lib", 
     "armcl", 
