@@ -69,7 +69,7 @@
       "local": "yes",
       "name": "Arm Compute Library with Neon support",
       "sort": 40,
-      "tags": "lib,armcl,vneon"
+      "tags": "lib,armcl,neon"
     },
     "lib-armcl-opencl": {
       "enable_if_env": {
@@ -79,7 +79,7 @@
       "local": "yes",
       "name": "Arm Compute Library with OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl,vopencl"
+      "tags": "lib,armcl,opencl"
     },
     "lib-armcl-neon-opencl": {
       "enable_if_env": {
@@ -89,7 +89,7 @@
       "local": "yes",
       "name": "Arm Compute Library with Neon and OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl,vneon,vopencl"
+      "tags": "lib,armcl,neon,opencl"
     },
     "lib-flatbuffers": {
       "enable_if_env": {
@@ -122,6 +122,33 @@
     "lib", 
     "armnn"
   ], 
+  "variations": {
+    "neon": {
+        "extra_env": {
+            "USE_NEON": "YES"
+        }
+    },
+    "opencl": {
+        "extra_env": {
+            "USE_OPENCL": "YES"
+        }
+    },
+    "tf": {
+        "extra_env": {
+            "USE_TF": "YES"
+        }
+    },
+    "tflite": {
+        "extra_env": {
+            "USE_TFLITE": "YES"
+        }
+    },
+    "onnx": {
+        "extra_env": {
+            "USE_ONNX": "YES"
+        }
+    }
+  },
   "use_preprocess_scripts_from_another_entry": {
     "data_uoa": "process-compiler-for-cmake",
     "module_uoa": "script"
