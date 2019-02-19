@@ -49,52 +49,32 @@
     }, 
     "tensorflow-source": {
       "enable_if_env": [
-        {
-            "USE_TF": ["on", "ON", "yes", "YES", "1"]
-        },
-        {
-            "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
-        }
+        { "USE_TF":     ["on", "ON", "yes", "YES", "1"] },
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
       ],
       "local": "yes", 
       "name": "Tensorflow source", 
       "sort": 30, 
       "tags": "tensorflow,source"
     },
-    "lib-armcl-neon": {
-      "enable_if_env": {
-            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
-            "USE_OPENCL": ["off", "OFF", "no", "NO", "0"]
-      },
+    "lib-armcl-variation": {
+      "enable_if_env": [
+        { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] },
+        { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] }
+      ],
       "local": "yes",
-      "name": "Arm Compute Library with Neon support",
+      "name": "Arm Compute Library with Neon or OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl,neon"
-    },
-    "lib-armcl-opencl": {
-      "enable_if_env": {
-        "USE_NEON": ["off", "OFF", "no", "NO", "0"],
-        "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
-      },
-      "local": "yes",
-      "name": "Arm Compute Library with OpenCL support",
-      "sort": 40,
-      "tags": "lib,armcl,opencl"
-    },
-    "lib-armcl-neon-opencl": {
-      "enable_if_env": {
-        "USE_NEON": ["on", "ON", "yes", "YES", "1"],
-        "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
-      },
-      "local": "yes",
-      "name": "Arm Compute Library with Neon and OpenCL support",
-      "sort": 40,
-      "tags": "lib,armcl,neon,opencl"
+      "tags": "lib,armcl",
+      "update_tags_if_env" : {
+        "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
+        "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+      }
     },
     "lib-flatbuffers": {
-      "enable_if_env": {
-        "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
-      },
+      "enable_if_env": [
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
+      ],
       "local": "yes",
       "name": "Google FlatBuffers library",
       "sort": 50,
