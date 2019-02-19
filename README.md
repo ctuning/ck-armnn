@@ -2,11 +2,11 @@
 
 ## Summary
 
-Frontends/backends                            | Reference      | Neon                         | OpenCL                         | Neon, OpenCL                                 |
+Frontends/backends                            | Reference | Neon          | OpenCL          | Neon, OpenCL         |
 -|-|-|-|-|
-[TF](https://www.tensorflow.org/)             | `USE_TF=1`     | `USE_TF=1`,     `USE_NEON=1` | `USE_TF=1`,     `USE_OPENCL=1` | `USE_TF=1`,     `USE_NEON=1`, `USE_OPENCL=1` |
-[TFLite](https://www.tensorflow.org/lite)    | `USE_TFLITE=1` | `USE_TFLITE=1`, `USE_NEON=1` | `USE_TFLITE=1`, `USE_OPENCL=1` | `USE_TFLITE=1`, `USE_NEON=1`, `USE_OPENCL=1` |
-[ONNX](https://onnx.ai/)                      | `USE_ONNX=1`   | `USE_ONNX=1`,   `USE_NEON=1` | `USE_ONNX=1`,   `USE_OPENCL=1` | `USE_ONNX=1`,   `USE_NEON=1`, `USE_OPENCL=1` |
+[TF](https://www.tensorflow.org/)             | `tf`      | `tf,neon`     | `tf,opencl`     | `tf,neon,opencl`     |
+[TFLite](https://www.tensorflow.org/lite)     | `tflite`  | `tflite,neon` | `tflite,opencl` | `tflite,neon,opencl` |
+[ONNX](https://onnx.ai/)                      | `onnx`    | `onnx,neon`   | `onnx,opencl`   | `onnx,neon,opencl`   |
 
 **NB:** Currently, following these instructions in order is important. Otherwise, CK will try to reuse environments, which will screw them up.
 
@@ -35,55 +35,25 @@ Frontends/backends                            | Reference      | Neon           
 <a name="tf_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn \
---env.USE_TF=1 \
---extra_tags=vtf \
---extra_version=-tf
+$ ck install package --tags=lib,armnn,tf
 ```
 
 <a name="tf_neon"></a>
 ### Backend: Neon
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 \
---extra_tags=vneon \
---extra_path=-neon
-
-$ ck install package --tags=lib,armnn \
---env.USE_TF=1 \
---env.USE_NEON=1 \
---extra_tags=vtf,vneon \
---extra_version=-tf-neon
+$ ck install package --tags=lib,armnn,tf,neon
 ```
 
 <a name="tf_opencl"></a>
 ### Backend: OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_path=-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_TF=1 \
---env.USE_OPENCL=1 \
---extra_tags=vtf,vopencl \
---extra_version=-tf-opencl
+$ ck install package --tags=lib,armnn,tf,opencl
 ```
 
 <a name="tf_neon_opencl"></a>
 ### Backends: Neon, OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_path=-neon-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_TF=1 \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vtf,vneon,vopencl \
---extra_version=-tf-neon-opencl
+$ ck install package --tags=lib,armnn,tf,neon,opencl
 ```
 
 
@@ -93,55 +63,25 @@ $ ck install package --tags=lib,armnn \
 <a name="tflite_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn \
---env.USE_TFLITE=1 \
---extra_tags=vtflite \
---extra_version=-tflite
+$ ck install package --tags=lib,armnn,tflite
 ```
 
 <a name="tflite_neon"></a>
 ### Backend: Neon
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 \
---extra_tags=vneon \
---extra_path=-neon
-
-$ ck install package --tags=lib,armnn \
---env.USE_TFLITE=1 \
---env.USE_NEON=1 \
---extra_tags=vtflite,vneon \
---extra_version=-tflite-neon
+$ ck install package --tags=lib,armnn,tflite,neon
 ```
 
 <a name="tflite_opencl"></a>
 ### Backend: OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_path=-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_TFLITE=1 \
---env.USE_OPENCL=1 \
---extra_tags=vtflite,vopencl \
---extra_version=-tflite-opencl
+$ ck install package --tags=lib,armnn,tflite,opencl
 ```
 
 <a name="tflite_neon_opencl"></a>
 ### Backends: Neon, OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_path=-neon-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_TFLITE=1 \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vtflite,vneon,vopencl \
---extra_version=-tflite-neon-opencl
+$ ck install package --tags=lib,armnn,tflite,neon,opencl
 ```
 
 
@@ -151,54 +91,24 @@ $ ck install package --tags=lib,armnn \
 <a name="onnx_ref"></a>
 ### Backend: Reference
 ```
-$ ck install package --tags=lib,armnn \
---env.USE_ONNX=1 \
---extra_tags=vonnx \
---extra_version=-tonnx
+$ ck install package --tags=lib,armnn,onnx
 ```
 
 <a name="onnx_neon"></a>
 ### Backend: Neon
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 \
---extra_tags=vneon \
---extra_path=-neon
-
-$ ck install package --tags=lib,armnn \
---env.USE_ONNX=1 \
---env.USE_NEON=1 \
---extra_tags=vonnx,vneon \
---extra_version=-onnx-neon
+$ ck install package --tags=lib,armnn,onnx,neon
 ```
 
 <a name="onnx_opencl"></a>
 ### Backend: OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_OPENCL=1 \
---extra_tags=vopencl \
---extra_path=-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_ONNX=1 \
---env.USE_OPENCL=1 \
---extra_tags=vonnx,vopencl \
---extra_version=-onnx-opencl
+$ ck install package --tags=lib,armnn,onnx,opencl
 ```
 
 <a name="onnx_neon_opencl"></a>
 ### Backends: Neon, OpenCL
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_path=-neon-opencl
-
-$ ck install package --tags=lib,armnn \
---env.USE_ONNX=1 \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vonnx,vneon,vopencl \
---extra_version=-onnx-neon-opencl
+$ ck install package --tags=lib,armnn,onnx,neon,opencl
 ```
 
