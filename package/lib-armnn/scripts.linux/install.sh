@@ -15,8 +15,6 @@ ARMNN_BUILD_DIR=$INSTALL_DIR/obj
 ARMNN_TARGET_DIR=$INSTALL_DIR/install
 
 TF_PB_DIR=$INSTALL_DIR/generated_tf_pb_files
-ONNX_SRC_URL=https://github.com/onnx/onnx.git
-ONNX_BRANCH="--branch rel-1.3.0"    # have to downgrade ONNX version for compatibility (see https://github.com/ARM-software/armnn/issues/113 )
 ONNX_SRC_DIR=$INSTALL_DIR/onnx
 
 echo ""

@@ -3,6 +3,9 @@
     "extra_dir": "", 
     "git_src_dir": "src", 
     "install_env": {
+      "ONNX_SRC_URL": "https://github.com/onnx/onnx.git",
+      "ONNX_BRANCH": "--branch rel-1.3.0",
+      "ONNX_BRANCH_comment": "have to downgrade ONNX version for compatibility (see https://github.com/ARM-software/armnn/issues/113)",
       "PACKAGE_BUILD_TYPE": "skip", 
       "PACKAGE_GIT": "YES", 
       "PACKAGE_SKIP_CLEAN_OBJ": "YES", 
