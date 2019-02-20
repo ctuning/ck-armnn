@@ -10,6 +10,7 @@
       "PACKAGE_SKIP_LINUX_MAKE": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/ARM-software/ComputeLibrary", 
+      "USE_DEV": "NO",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO"
     }
@@ -39,8 +40,14 @@
     "viascons"
   ], 
   "variations": {
+    "release": {
+        "extra_env": {
+            "USE_DEV": "NO"
+        }
+    },
     "dev": {
         "extra_env": {
+            "USE_DEV": "YES",
             "PACKAGE_URL": "https://review.mlplatform.org/ml/ComputeLibrary"
         }
     },
