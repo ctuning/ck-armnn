@@ -72,7 +72,7 @@
       "local": "yes",
       "name": "Arm Compute Library (a release version) with Neon or OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl",
+      "tags": "lib,armcl,viascons",
       "no_tags": "dev",
       "update_tags_if_env" : {
         "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
@@ -93,7 +93,7 @@
       "local": "yes",
       "name": "Arm Compute Library (a development version) with Neon or OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl,dev",
+      "tags": "lib,armcl,viascons,dev",
       "update_tags_if_env" : {
         "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
         "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
