@@ -58,45 +58,20 @@
       "sort": 30, 
       "tags": "tensorflow,source"
     },
-    "lib-armcl-release": {
+    "lib-armcl-variation": {
       "enable_if_env": [
-        {
-            "USE_DEV":      ["off", "OFF", "no", "NO", "0"],
-            "USE_NEON":     ["on", "ON", "yes", "YES", "1"]
-        },
-        {
-            "USE_DEV":      ["off", "OFF", "no", "NO", "0"],
-            "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"]
-        }
+        { "USE_NEON":     ["on", "ON", "yes", "YES", "1"] },
+        { "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"] }
       ],
       "local": "yes",
-      "name": "Arm Compute Library (a release version) with Neon or OpenCL support",
+      "name": "Arm Compute Library (either release or development version) with Neon or OpenCL support",
       "sort": 40,
       "tags": "lib,armcl,viascons",
-      "no_tags": "dev",
       "update_tags_if_env" : {
-        "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
-        "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
-      }
-    },
-    "lib-armcl-dev": {
-      "enable_if_env": [
-        {
-            "USE_DEV":      ["on", "ON", "yes", "YES", "1"],
-            "USE_NEON":     ["on", "ON", "yes", "YES", "1"]
-        },
-        {
-            "USE_DEV":      ["on", "ON", "yes", "YES", "1"],
-            "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"]
-        }
-      ],
-      "local": "yes",
-      "name": "Arm Compute Library (a development version) with Neon or OpenCL support",
-      "sort": 40,
-      "tags": "lib,armcl,viascons,dev",
-      "update_tags_if_env" : {
-        "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
-        "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+        "release":  [ { "USE_DEV":    ["off", "OFF", "no", "NO", "0"] } ],
+        "dev":      [ { "USE_DEV":    ["on", "ON", "yes", "YES", "1"] } ],
+        "neon":     [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
+        "opencl":   [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
       }
     },
     "lib-flatbuffers": {
@@ -131,6 +106,11 @@
     "armnn"
   ], 
   "variations": {
+    "release": {
+        "extra_env": {
+            "USE_DEV": "NO"
+        }
+    },
     "dev": {
         "extra_env": {
             "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
