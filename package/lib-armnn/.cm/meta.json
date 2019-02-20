@@ -9,6 +9,7 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
+      "USE_DEV": "NO",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO",
       "USE_TF": "NO",
@@ -57,15 +58,42 @@
       "sort": 30, 
       "tags": "tensorflow,source"
     },
-    "lib-armcl-variation": {
+    "lib-armcl-release": {
       "enable_if_env": [
-        { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] },
-        { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] }
+        {
+            "USE_DEV":      ["off", "OFF", "no", "NO", "0"],
+            "USE_NEON":     ["on", "ON", "yes", "YES", "1"]
+        },
+        {
+            "USE_DEV":      ["off", "OFF", "no", "NO", "0"],
+            "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"]
+        }
       ],
       "local": "yes",
-      "name": "Arm Compute Library with Neon or OpenCL support",
+      "name": "Arm Compute Library (a release version) with Neon or OpenCL support",
       "sort": 40,
       "tags": "lib,armcl",
+      "no_tags": "dev",
+      "update_tags_if_env" : {
+        "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
+        "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+      }
+    },
+    "lib-armcl-dev": {
+      "enable_if_env": [
+        {
+            "USE_DEV":      ["on", "ON", "yes", "YES", "1"],
+            "USE_NEON":     ["on", "ON", "yes", "YES", "1"]
+        },
+        {
+            "USE_DEV":      ["on", "ON", "yes", "YES", "1"],
+            "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"]
+        }
+      ],
+      "local": "yes",
+      "name": "Arm Compute Library (a development version) with Neon or OpenCL support",
+      "sort": 40,
+      "tags": "lib,armcl,dev",
       "update_tags_if_env" : {
         "neon":   [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
         "opencl": [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
@@ -103,6 +131,12 @@
     "armnn"
   ], 
   "variations": {
+    "dev": {
+        "extra_env": {
+            "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
+            "USE_DEV": "YES"
+        }
+    },
     "neon": {
         "extra_env": {
             "USE_NEON": "YES"
