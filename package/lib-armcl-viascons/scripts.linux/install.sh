@@ -16,7 +16,9 @@ ARMCL_SOURCE_DIR=$INSTALL_DIR/$PACKAGE_SUB_DIR
 
 ############################################################
 echo ""
-echo "Building ArmCL with 'USE_NEON=${USE_NEON}' & 'USE_OPENCL=${USE_OPENCL}' in $INSTALL_DIR using scons in ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads ..."
+echo "Building ArmCL package in ${INSTALL_DIR} using scons in ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads:"
+echo "Release/Development: USE_DEV='${USE_DEV}'"
+echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
 echo ""
 
 if [ "$USE_NEON" == "ON" ] || [ "$USE_NEON" == "on" ] || [ "$USE_NEON" == "YES" ] || [ "$USE_NEON" == "yes" ] || [ "$USE_NEON" == "1" ]

@@ -15,12 +15,11 @@ ARMNN_BUILD_DIR=$INSTALL_DIR/obj
 ARMNN_TARGET_DIR=$INSTALL_DIR/install
 
 TF_PB_DIR=$INSTALL_DIR/generated_tf_pb_files
-ONNX_SRC_URL=https://github.com/onnx/onnx.git
-ONNX_BRANCH="--branch rel-1.3.0"    # have to downgrade ONNX version for compatibility (see https://github.com/ARM-software/armnn/issues/113 )
 ONNX_SRC_DIR=$INSTALL_DIR/onnx
 
 echo ""
 echo "Building ArmNN package in $INSTALL_DIR :"
+echo "Release/Development: USE_DEV='${USE_DEV}'"
 echo "Frontends: USE_TF='${USE_TF}' , USE_TFLITE='${USE_TFLITE}' , USE_ONNX='${USE_ONNX}'"
 echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
 echo ""

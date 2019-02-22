@@ -58,18 +58,23 @@ def setup(i):
 
     env                         = i['env']
     hosd                        = i['host_os_dict']
-    tosd                        = i['target_os_dict']
-    file_extensions             = hosd.get('file_extensions',{})    # not clear whether hosd or tosd should be used in soft detection
-    file_root_name              = cus['file_root_name']
     env_prefix                  = cus['env_prefix']
 
+    # This env-setting method is the most introspective (the paths generated may be post-processed),
+    # but rather restrictive - only certain variable names are taken into account:
+    # (higher level)
+    #
     cus['path_lib']             = path_lib
     cus['path_include']         = path_include
 
+    # Any variable that ends up in "env" will become a part of the env-setting script:
+    # (medium level)
+    #
     env[env_prefix]             = install_root
-    env[env_prefix+'_LIB']      = path_lib
-    env[env_prefix+'_INCLUDE']  = path_include
 
+    # A monolythic OS-dependent script is generated here:
+    # (lower level)
+    #
     r = ck.access({'action': 'lib_path_export_script', 
                    'module_uoa': 'os', 
                    'host_os_dict': hosd, 

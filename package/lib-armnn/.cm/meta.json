@@ -3,12 +3,16 @@
     "extra_dir": "", 
     "git_src_dir": "src", 
     "install_env": {
+      "ONNX_SRC_URL": "https://github.com/onnx/onnx.git",
+      "ONNX_BRANCH": "--branch rel-1.3.0",
+      "ONNX_BRANCH_comment": "have to downgrade ONNX version for compatibility (see https://github.com/ARM-software/armnn/issues/113)",
       "PACKAGE_BUILD_TYPE": "skip", 
       "PACKAGE_GIT": "YES", 
       "PACKAGE_SKIP_CLEAN_OBJ": "YES", 
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
+      "USE_DEV": "NO",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO",
       "USE_TF": "NO",
@@ -49,52 +53,34 @@
     }, 
     "tensorflow-source": {
       "enable_if_env": [
-        {
-            "USE_TF": ["on", "ON", "yes", "YES", "1"]
-        },
-        {
-            "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
-        }
+        { "USE_TF":     ["on", "ON", "yes", "YES", "1"] },
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
       ],
       "local": "yes", 
       "name": "Tensorflow source", 
       "sort": 30, 
       "tags": "tensorflow,source"
     },
-    "lib-armcl-neon": {
-      "enable_if_env": {
-            "USE_NEON": ["on", "ON", "yes", "YES", "1"],
-            "USE_OPENCL": ["off", "OFF", "no", "NO", "0"]
-      },
+    "lib-armcl-variation": {
+      "enable_if_env": [
+        { "USE_NEON":     ["on", "ON", "yes", "YES", "1"] },
+        { "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"] }
+      ],
       "local": "yes",
-      "name": "Arm Compute Library with Neon support",
+      "name": "Arm Compute Library (either release or development version) with Neon or OpenCL support",
       "sort": 40,
-      "tags": "lib,armcl,vneon"
-    },
-    "lib-armcl-opencl": {
-      "enable_if_env": {
-        "USE_NEON": ["off", "OFF", "no", "NO", "0"],
-        "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
-      },
-      "local": "yes",
-      "name": "Arm Compute Library with OpenCL support",
-      "sort": 40,
-      "tags": "lib,armcl,vopencl"
-    },
-    "lib-armcl-neon-opencl": {
-      "enable_if_env": {
-        "USE_NEON": ["on", "ON", "yes", "YES", "1"],
-        "USE_OPENCL": ["on", "ON", "yes", "YES", "1"]
-      },
-      "local": "yes",
-      "name": "Arm Compute Library with Neon and OpenCL support",
-      "sort": 40,
-      "tags": "lib,armcl,vneon,vopencl"
+      "tags": "lib,armcl,viascons",
+      "update_tags_if_env" : {
+        "release":  [ { "USE_DEV":    ["off", "OFF", "no", "NO", "0"] } ],
+        "dev":      [ { "USE_DEV":    ["on", "ON", "yes", "YES", "1"] } ],
+        "neon":     [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
+        "opencl":   [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+      }
     },
     "lib-flatbuffers": {
-      "enable_if_env": {
-        "USE_TFLITE": ["on", "ON", "yes", "YES", "1"]
-      },
+      "enable_if_env": [
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
+      ],
       "local": "yes",
       "name": "Google FlatBuffers library",
       "sort": 50,
@@ -122,6 +108,44 @@
     "lib", 
     "armnn"
   ], 
+  "variations": {
+    "release": {
+        "extra_env": {
+            "USE_DEV": "NO"
+        }
+    },
+    "dev": {
+        "extra_env": {
+            "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
+            "USE_DEV": "YES"
+        }
+    },
+    "neon": {
+        "extra_env": {
+            "USE_NEON": "YES"
+        }
+    },
+    "opencl": {
+        "extra_env": {
+            "USE_OPENCL": "YES"
+        }
+    },
+    "tf": {
+        "extra_env": {
+            "USE_TF": "YES"
+        }
+    },
+    "tflite": {
+        "extra_env": {
+            "USE_TFLITE": "YES"
+        }
+    },
+    "onnx": {
+        "extra_env": {
+            "USE_ONNX": "YES"
+        }
+    }
+  },
   "use_preprocess_scripts_from_another_entry": {
     "data_uoa": "process-compiler-for-cmake",
     "module_uoa": "script"

@@ -10,8 +10,9 @@
       "PACKAGE_SKIP_LINUX_MAKE": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/ARM-software/ComputeLibrary", 
-      "USE_NEON": "OFF", 
-      "USE_OPENCL": "OFF"
+      "USE_DEV": "NO",
+      "USE_NEON": "NO",
+      "USE_OPENCL": "NO"
     }
   }, 
   "deps": {
@@ -38,6 +39,29 @@
     "armcl", 
     "viascons"
   ], 
+  "variations": {
+    "release": {
+        "extra_env": {
+            "USE_DEV": "NO"
+        }
+    },
+    "dev": {
+        "extra_env": {
+            "USE_DEV": "YES",
+            "PACKAGE_URL": "https://review.mlplatform.org/ml/ComputeLibrary"
+        }
+    },
+    "neon": {
+        "extra_env": {
+            "USE_NEON": "YES"
+        }
+    },
+    "opencl": {
+        "extra_env": {
+            "USE_OPENCL": "YES"
+        }
+    }
+  },
   "use_scripts_from_another_entry": {
     "data_uoa": "download-and-install-package", 
     "module_uoa": "script"
