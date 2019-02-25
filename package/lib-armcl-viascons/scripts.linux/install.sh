@@ -17,7 +17,7 @@ ARMCL_SOURCE_DIR=$INSTALL_DIR/$PACKAGE_SUB_DIR
 ############################################################
 echo ""
 echo "Building ArmCL package in ${INSTALL_DIR} using scons in ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads:"
-echo "Release/Development: USE_DEV='${USE_DEV}'"
+echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
 echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
 echo ""
 
