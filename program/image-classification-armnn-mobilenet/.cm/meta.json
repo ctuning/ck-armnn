@@ -17,7 +17,7 @@
       "local": "yes",
       "name": "ArmNN library",
       "sort": 40,
-      "tags": "lib,armnn"
+      "tags": "lib,armnn,tflite,dev"
     },
     "xopenme": {
       "local": "yes",
