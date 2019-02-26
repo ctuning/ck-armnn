@@ -9,8 +9,8 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SKIP_LINUX_MAKE": "YES", 
       "PACKAGE_SUB_DIR": "src", 
-      "PACKAGE_URL": "https://github.com/ARM-software/ComputeLibrary", 
-      "USE_DEV": "NO",
+      "PACKAGE_URL": "https://github.com/ARM-software/ComputeLibrary",
+      "PACKAGE_VERSION": "release",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO"
     }
@@ -40,15 +40,18 @@
     "viascons"
   ], 
   "variations": {
-    "release": {
+    "rel.18.08": {
         "extra_env": {
-            "USE_DEV": "NO"
+            "PACKAGE_GIT_CHECKOUT": "v18.08",
+            "PACKAGE_VERSION": "18.08"
         }
+    },
+    "release": {
     },
     "dev": {
         "extra_env": {
-            "USE_DEV": "YES",
-            "PACKAGE_URL": "https://review.mlplatform.org/ml/ComputeLibrary"
+            "PACKAGE_URL": "https://review.mlplatform.org/ml/ComputeLibrary",
+            "PACKAGE_VERSION": "dev"
         }
     },
     "neon": {

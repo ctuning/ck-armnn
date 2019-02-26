@@ -12,15 +12,14 @@
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
-      "USE_DEV": "NO",
+      "PACKAGE_VERSION": "release",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO",
       "USE_TF": "NO",
       "USE_TFLITE": "NO",
       "USE_ONNX": "NO"
     }, 
-    "use_git_revision": "yes", 
-    "version": "default"
+    "use_git_revision": "yes"
   }, 
   "deps": {
     "lib-boost": {
@@ -71,10 +70,11 @@
       "sort": 40,
       "tags": "lib,armcl,viascons",
       "update_tags_if_env" : {
-        "release":  [ { "USE_DEV":    ["off", "OFF", "no", "NO", "0"] } ],
-        "dev":      [ { "USE_DEV":    ["on", "ON", "yes", "YES", "1"] } ],
-        "neon":     [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
-        "opencl":   [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+        "rel.18.08":    [ { "PACKAGE_VERSION": "18.08" } ],
+        "release":      [ { "PACKAGE_VERSION": "release" } ],
+        "dev":          [ { "PACKAGE_VERSION": "dev" } ],
+        "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
+        "opencl":       [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
       }
     },
     "lib-flatbuffers": {
@@ -109,15 +109,18 @@
     "armnn"
   ], 
   "variations": {
-    "release": {
+    "rel.18.08": {
         "extra_env": {
-            "USE_DEV": "NO"
+            "PACKAGE_GIT_CHECKOUT": "v18.08",
+            "PACKAGE_VERSION": "18.08"
         }
+    },
+    "release": {
     },
     "dev": {
         "extra_env": {
             "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
-            "USE_DEV": "YES"
+            "PACKAGE_VERSION": "dev"
         }
     },
     "neon": {

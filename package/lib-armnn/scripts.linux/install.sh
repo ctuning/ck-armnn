@@ -19,12 +19,10 @@ ONNX_SRC_DIR=$INSTALL_DIR/onnx
 
 echo ""
 echo "Building ArmNN package in $INSTALL_DIR :"
-echo "Release/Development: USE_DEV='${USE_DEV}'"
+echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
 echo "Frontends: USE_TF='${USE_TF}' , USE_TFLITE='${USE_TFLITE}' , USE_ONNX='${USE_ONNX}'"
 echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
 echo ""
-
-set
 
 ################ Frontend: ###########################################
 
