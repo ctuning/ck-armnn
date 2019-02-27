@@ -46,10 +46,8 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
 
 
 int main(int argc, char* argv[]) {
-    const char *backend = getenv("CK_BACKEND");
-    string ck_backend;
-    if (!backend) ck_backend = "CpuRef";
-    else ck_backend = backend;
+    string use_neon     = getenv("USE_NEON");
+    string use_opencl   = getenv("USE_OPENCL");
 
     try {
         init_benchmark();
@@ -74,12 +72,12 @@ int main(int argc, char* argv[]) {
         // Optimize the network for a specific runtime compute device, e.g. CpuAcc, GpuAcc
         //std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
         std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuRef};
-        if (ck_backend == "CpuAcc") {
-            optOptions = {armnn::Compute::CpuAcc};
-        } else if (ck_backend == "GpuAcc") {
-            optOptions = {armnn::Compute::GpuAcc};
-        } else if (ck_backend == "CpuGpuAcc") {
+        if( (use_neon == "yes") && (use_opencl == "yes") ) {
             optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
+        } else if( use_neon == "yes" ) {
+            optOptions = {armnn::Compute::CpuAcc};
+        } else if( use_opencl == "yes" ) {
+            optOptions = {armnn::Compute::GpuAcc};
         }
 
         cout << "\nLoading graph..." << endl;

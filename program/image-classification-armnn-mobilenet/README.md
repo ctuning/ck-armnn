@@ -2,21 +2,30 @@
 
 This program uses a statically linked [TensorFlow Lite](https://www.tensorflow.org/lite/) library.
 
-## Compile
+## Compile (depending on desired backend)
 
 ```
 $ ck compile program:image-classification-armnn-mobilenet
 ```
 
-## Run
+```
+$ ck compile program:image-classification-armnn-mobilenet --env.USE_NEON
+```
 
 ```
-$ ck run program:image-classification-armnn-mobilenet  --env.CK_BATCH_COUNT=5 --env.CK_BACKEND=CpuAcc
+$ ck compile program:image-classification-armnn-mobilenet --env.USE_OPENCL
+```
+
+```
+$ ck compile program:image-classification-armnn-mobilenet --env.USE_NEON --env.USE_OPENCL
+```
+
+## Run (assuming the same options for the backend)
+
+```
+$ ck run program:image-classification-armnn-mobilenet  --env.CK_BATCH_COUNT=5 --env.USE_NEON
 ```
 **Here:**
  - CK_BATCH_COUNT - file's count to evaluate (default: 1)
- - CK_BACKEND - type of backend:
-   - CpuRef - default
-   - CpuAcc - NEON
-   - GpuAcc - OpenCL
-   - CpuGpuAcc - NEON + OpenCL
+ - USE_NEON - asking for Cpu acceleration backend support
+ - USE_OPENCL - asking for Gpu acceleration backend support
