@@ -2,26 +2,6 @@
 
 This program uses a statically linked [TensorFlow Lite](https://www.tensorflow.org/lite/) library.
 
-## Prerequisites
-Installed ArmCL. To install:
-```
-$ ck install package --tags=armcl,viascons --env.USE_NEON=1 --env.USE_OPENCL=1 --extra_tags=vneon,vopencl --extra_path=-neon-opencl
-```
-or minimum:
-```
-$ ck install package --tags=armcl,viascons
-```
-
-
-Installed ArmNN library. To install:
-```
-$ ck install package:lib-armnn-dev --env.USE_TFLITE=1 --env.USE_NEON=1 --env.USE_OPENCL=1 --extra_tags=vneon,vopencl --extra_version=-neon-opencl-dev
-```
-or minimum:
-```
-$ ck install package:lib-armnn-dev --env.USE_TFLITE=1
-```
-
 ## Compile
 
 ```
