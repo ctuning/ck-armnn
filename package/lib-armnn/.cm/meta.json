@@ -71,6 +71,8 @@
       "tags": "lib,armcl,viascons",
       "update_tags_if_env" : {
         "rel.18.08":    [ { "PACKAGE_VERSION": "18.08" } ],
+        "rel.18.11":    [ { "PACKAGE_VERSION": "18.11" } ],
+        "rel.19.02":    [ { "PACKAGE_VERSION": "19.02" } ],
         "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
@@ -109,13 +111,25 @@
     "armnn"
   ], 
   "variations": {
+    "release": {
+    },
     "rel.18.08": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v18.08",
             "PACKAGE_VERSION": "18.08"
         }
     },
-    "release": {
+    "rel.18.11": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v18.11",
+            "PACKAGE_VERSION": "18.11"
+        }
+    },
+    "rel.19.02": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v19.02",
+            "PACKAGE_VERSION": "19.02"
+        }
     },
     "dev": {
         "extra_env": {
