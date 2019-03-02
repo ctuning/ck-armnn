@@ -17,6 +17,10 @@ ARMNN_TARGET_DIR=$INSTALL_DIR/install
 TF_PB_DIR=$INSTALL_DIR/generated_tf_pb_files
 ONNX_SRC_DIR=$INSTALL_DIR/onnx
 
+function exit_if_error() {
+    if [ "${?}" != "0" ]; then exit 1; fi
+}
+
 echo ""
 echo "Building ArmNN package in $INSTALL_DIR :"
 echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
@@ -43,6 +47,7 @@ then
     mkdir ${TF_PB_DIR}
     cd ${CK_ENV_LIB_TF_SRC_SRC}
     ${ARMNN_SOURCE_DIR}/scripts/generate_tensorflow_protobuf.sh ${TF_PB_DIR} ${CK_ENV_LIB_PROTOBUF_HOST}
+    exit_if_error
 
     CMAKE_FOR_TF=" -DBUILD_TF_PARSER=1 -DTF_GENERATED_SOURCES=${TF_PB_DIR} "
 else
@@ -61,6 +66,7 @@ then
     unset ONNX_ML
     cd ${ONNX_SRC_DIR}
     ${CK_ENV_LIB_PROTOBUF_HOST_BIN}/protoc onnx/onnx.proto --proto_path=. --proto_path=${CK_ENV_LIB_PROTOBUF_HOST_INCLUDE} --cpp_out ${ONNX_SRC_DIR}
+    exit_if_error
 
     CMAKE_FOR_ONNX=" -DBUILD_ONNX_PARSER=1 -DONNX_GENERATED_SOURCES=${ONNX_SRC_DIR} "
 else
@@ -107,4 +113,6 @@ cmake ${ARMNN_SOURCE_DIR} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
     -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR}
+
+exit_if_error
 
