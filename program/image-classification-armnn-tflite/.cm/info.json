@@ -17,5 +17,5 @@
       "1"
     ]
   }, 
-  "data_name": "image-classification-armnn-mobilenet"
+  "data_name": "image-classification-armnn-tflite"
 }
