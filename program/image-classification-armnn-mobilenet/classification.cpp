@@ -46,8 +46,10 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
 
 
 int main(int argc, char* argv[]) {
-    string use_neon     = getenv("USE_NEON");
-    string use_opencl   = getenv("USE_OPENCL");
+    string use_neon             = getenv("USE_NEON");
+    string use_opencl           = getenv("USE_OPENCL");
+    string input_layer_name     = getenv("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
+    string output_layer_name    = getenv("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
 
     try {
         init_benchmark();
@@ -86,8 +88,8 @@ int main(int argc, char* argv[]) {
             if (!network)
                 throw "Failed to load graph from file";
 
-            armnnTfLiteParser::BindingPointInfo inputBindingInfo = parser->GetNetworkInputBindingInfo(0,"input");
-            armnnTfLiteParser::BindingPointInfo outputBindingInfo = parser->GetNetworkOutputBindingInfo(0,"MobilenetV1/Predictions/Reshape_1");
+            armnnTfLiteParser::BindingPointInfo inputBindingInfo = parser->GetNetworkInputBindingInfo(0, input_layer_name);
+            armnnTfLiteParser::BindingPointInfo outputBindingInfo = parser->GetNetworkOutputBindingInfo(0, output_layer_name);
 
             armnn::TensorShape inShape = inputBindingInfo.second.GetShape();
             armnn::TensorShape outShape = outputBindingInfo.second.GetShape();
