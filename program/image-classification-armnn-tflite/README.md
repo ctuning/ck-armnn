@@ -5,25 +5,25 @@ This program uses a statically linked [TensorFlow Lite](https://www.tensorflow.o
 ## Compile (depending on desired backend)
 
 ```
-$ ck compile program:image-classification-armnn-mobilenet
+$ ck compile program:image-classification-armnn-tflite
 ```
 
 ```
-$ ck compile program:image-classification-armnn-mobilenet --env.USE_NEON
+$ ck compile program:image-classification-armnn-tflite --env.USE_NEON
 ```
 
 ```
-$ ck compile program:image-classification-armnn-mobilenet --env.USE_OPENCL
+$ ck compile program:image-classification-armnn-tflite --env.USE_OPENCL
 ```
 
 ```
-$ ck compile program:image-classification-armnn-mobilenet --env.USE_NEON --env.USE_OPENCL
+$ ck compile program:image-classification-armnn-tflite --env.USE_NEON --env.USE_OPENCL
 ```
 
 ## Run (assuming the same options for the backend)
 
 ```
-$ ck run program:image-classification-armnn-mobilenet  --env.CK_BATCH_COUNT=5 --env.USE_NEON
+$ ck run program:image-classification-armnn-tflite  --env.CK_BATCH_COUNT=5 --env.USE_NEON
 ```
 **Here:**
  - CK_BATCH_COUNT - file's count to evaluate (default: 1)
