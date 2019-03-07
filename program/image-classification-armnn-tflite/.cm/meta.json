@@ -8,12 +8,6 @@
       "sort": 0,
       "tags": "compiler,lang-cpp"
     },
-    "lib-tensorflow": {
-      "local": "yes",
-      "name": "TensorFlow C++ API",
-      "sort": 20,
-      "tags": "lib,tensorflow-lite,vstatic"
-    },
     "lib-armnn": {
       "local": "yes",
       "name": "ArmNN library",
