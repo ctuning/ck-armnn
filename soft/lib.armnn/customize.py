@@ -47,6 +47,7 @@ def setup(i):
 
     """
 
+
     # Get variables
     ck              = i['ck_kernel']
     cus             = i.get('customize',{})
@@ -60,12 +61,17 @@ def setup(i):
     hosd                        = i['host_os_dict']
     env_prefix                  = cus['env_prefix']
 
+    # We need to pass this path to the users of ArmNN library
+    #
+    boost_include               = i.get('deps',{}).get('lib-boost',{}).get('dict',{}).get('customize',{}).get('path_include','')
+
     # This env-setting method is the most introspective (the paths generated may be post-processed),
     # but rather restrictive - only certain variable names are taken into account:
     # (higher level)
     #
     cus['path_lib']             = path_lib
     cus['path_include']         = path_include
+    cus['path_includes']        = [boost_include, path_include]
 
     # Any variable that ends up in "env" will become a part of the env-setting script:
     # (medium level)

@@ -26,6 +26,7 @@
       "local": "yes", 
       "name": "Boost library", 
       "skip_default": "yes", 
+      "add_dict": "yes",
       "sort": 10, 
       "tags": "lib,boost,for-armnn", 
       "version_from": [
