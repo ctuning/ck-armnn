@@ -12,7 +12,7 @@
       "local": "yes",
       "name": "ArmNN library",
       "sort": 40,
-      "tags": "lib,armnn,tflite,dev",
+      "tags": "lib,armnn,tflite,rel.19.02",
       "update_tags_if_env" : {
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
         "opencl":       [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
@@ -86,10 +86,10 @@
     "weights": {
       "force_target_as_host": "yes",
       "local": "yes",
-      "name": "TensorFlow-Python model and weights",
+      "name": "TensorFlow Lite model",
       "no_tags": "mobilenet-all",
       "sort": 30,
-      "tags": "tensorflowmodel,weights,tflite"
+      "tags": "model,tflite"
     }
   },
   "run_vars": {
