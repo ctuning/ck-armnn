@@ -44,12 +44,14 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
     return { {output.first, armnn::Tensor(output.second, outputTensorData) } };
 }
 
-
 int main(int argc, char* argv[]) {
-    string use_neon             = getenv("USE_NEON");
-    string use_opencl           = getenv("USE_OPENCL");
-    string input_layer_name     = getenv("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
-    string output_layer_name    = getenv("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
+    bool use_neon                   = getenv_b("USE_NEON");
+    bool use_opencl                 = getenv_b("USE_OPENCL");
+    string input_layer_name         = getenv("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
+    string output_layer_name        = getenv("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
+    unsigned input_shape_height     = getenv_i("CK_ENV_TENSORFLOW_MODEL_IMAGE_HEIGHT");
+    unsigned input_shape_width      = getenv_i("CK_ENV_TENSORFLOW_MODEL_IMAGE_WIDTH");
+    unsigned input_shape_channels   = 3;
 
     try {
         init_benchmark();
@@ -74,19 +76,20 @@ int main(int argc, char* argv[]) {
         // Optimize the network for a specific runtime compute device, e.g. CpuAcc, GpuAcc
         //std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
         std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuRef};
-        if( (use_neon == "yes") && (use_opencl == "yes") ) {
+        if( use_neon && use_opencl) {
             optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
-        } else if( use_neon == "yes" ) {
+        } else if( use_neon ) {
             optOptions = {armnn::Compute::CpuAcc};
-        } else if( use_opencl == "yes" ) {
+        } else if( use_opencl ) {
             optOptions = {armnn::Compute::GpuAcc};
         }
 
         cout << "\nLoading graph..." << endl;
         measure_setup([&]{
+            armnn::TensorShape input_tensor_shape({ 1, input_shape_height, input_shape_width, input_shape_channels }); // NHWC
             armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile(
                 settings.graph_file.c_str(),
-                { { input_layer_name, {1, 224, 224, 3}} },
+                { { input_layer_name, input_tensor_shape} },
                 { output_layer_name }
             );
             if (!network)
