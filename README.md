@@ -1,30 +1,28 @@
 # ArmNN installation
 
 To install a particular version of ArmNN we have to combine three kinds of tags:
-Frontend-related tags, Backend-related tags and Version/Release-related tags.
 
-Frontend options: `tf`, `tflite`, `onnx`. These can be combined.
+- Frontend-related tags (based on supported ArmNN parsers): `tf`, `tflite`, `onnx`. These can be combined.
 
-Backend options based on a specific build of ArmCL: `neon`, `opencl`. These can be combined or both missing (reference).
+- Backend-related tags (based on a specific build of ArmCL): `neon`, `opencl`. These can be combined or both missing (reference).
 
-Version/Release: `rel.18.08` (a particular frozen release), `release` (the last stable release), `dev` (live development branch).
-    These are mutually exclusive. Exactly one Version/Release tag has to be present.
+- Version/Release-related tags: `rel.19.02` (a particular frozen release), `release` (the latest stable release), `dev` (the live development branch). These are mutually exclusive. Exactly one Version/Release tag must be present.
 
-## Examples:
+## Examples
 
-Live development version supporting TFlite frontend and NEON backend:
+The live development version supporting the TFLite frontend and Neon backend:
 ```
 $ ck install package --tags=lib,armnn,tflite,neon,dev
 ```
 
-Last stable release supporting TensorFlow frontend and OpenCL backend:
+The latest stable release supporting the TensorFlow frontend and OpenCL backend:
 ```
 $ ck install package --tags=lib,armnn,tf,opencl,release
 ```
 
-Release 18.08 supporting TFlite and ONNX frontends and no (=reference) backend:
+The 19.02 release supporting the TFLite and ONNX frontends and no optimized backends (i.e. reference):
 ```
-$ ck install package --tags=lib,armnn,tflite,onnx,rel.18.08
+$ ck install package --tags=lib,armnn,tflite,onnx,rel.19.02
 ```
 
 ## (Old) Summary
@@ -138,4 +136,3 @@ $ ck install package --tags=lib,armnn,onnx,opencl
 ```
 $ ck install package --tags=lib,armnn,onnx,neon,opencl
 ```
-
