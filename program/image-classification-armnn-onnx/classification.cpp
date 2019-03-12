@@ -25,9 +25,9 @@ using namespace std;
 using namespace CK;
 
 template <typename TData, typename TInConverter, typename TOutConverter>
-class TFLiteBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
+class OnnxBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
 public:
-    TFLiteBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
+    OnnxBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
             : Benchmark<TData, TInConverter, TOutConverter>(settings, in_ptr, out_ptr) {
     }
 };
@@ -48,8 +48,8 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
 int main(int argc, char* argv[]) {
     string use_neon             = getenv("USE_NEON");
     string use_opencl           = getenv("USE_OPENCL");
-    string input_layer_name     = getenv("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
-    string output_layer_name    = getenv("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
+    string input_layer_name     = getenv("CK_ENV_ONNX_MODEL_INPUT_LAYER_NAME");
+    string output_layer_name    = getenv("CK_ENV_ONNX_MODEL_OUTPUT_LAYER_NAME");
 
     try {
         init_benchmark();
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
             outputTensor = MakeOutputTensors(outputBindingInfo, output);
             inputTensor = MakeInputTensors(inputBindingInfo, input);
 
-            benchmark.reset(new TFLiteBenchmark<float, InNormalize, OutCopy>(&settings, input, output, 0));
+            benchmark.reset(new OnnxBenchmark<float, InNormalize, OutCopy>(&settings, input, output, 0));
 
             int out_num = outShape[0];
             int out_classes = outShape[1];
