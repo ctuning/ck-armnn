@@ -34,8 +34,8 @@ $ ck run program:image-classification-armnn-tflite \
 ```
 **where:**
  - `CK_BATCH_COUNT` - the number of batches to evaluate (1 by default).
- - `USE_NEON` - enable CPU acceleration.
- - `USE_OPENCL` - enable GPU acceleration.
+ - `USE_NEON` - enable CPU acceleration (false by default).
+ - `USE_OPENCL` - enable GPU acceleration (false by default).
 
 ## Benchmark
 
