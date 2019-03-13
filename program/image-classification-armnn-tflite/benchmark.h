@@ -54,8 +54,10 @@ inline void store_value_f(int index, const char* name, float value) {
 /// Load mandatory string value from the environment.
 inline std::string getenv_s(const std::string& name) {
   const char *value = getenv(name.c_str());
-  if (!value)
+  if (!value) {
+    std::cout << "Required environment variable " << name << " is not set" << std::endl;
     throw "Required environment variable " + name + " is not set";
+  }
   return std::string(value);
 }
 
@@ -73,6 +75,13 @@ inline float getenv_f(const std::string& name) {
   if (!value)
     throw "Required environment variable " + name + " is not set";
   return atof(value);
+}
+
+/// Load an optional boolean value from the environment.
+inline bool getenv_b(const char *name) {
+    std::string value = getenv(name);
+
+    return (value == "YES" || value == "yes" || value == "ON" || value == "on" || value == "1");
 }
 
 /// Dummy `sprintf` like formatting function using std::string.
