@@ -10,6 +10,7 @@ import os
 
 def ck_preprocess(i):
   def dep_env(dep, var): return i['deps'][dep]['dict']['env'].get(var)
+  def dep_install_env(dep, var): return i['deps'][dep]['dict']['customize']['install_env'].get(var)
   
   MODEL_FILE = ''
   MODEL_DIR = dep_env('weights', 'CK_ENV_TENSORFLOW_MODEL_ROOT')
@@ -30,6 +31,8 @@ def ck_preprocess(i):
     files_to_push_by_path['RUN_OPT_GRAPH_PATH'] = MODEL_PATH
   else:
     new_env['RUN_OPT_GRAPH_FILE'] = MODEL_PATH
+
+  new_env['RUN_OPT_DATA_LAYOUT'] = dep_install_env('weights', 'CK_MODEL_DATA_LAYOUT')
 
   print('--------------------------------\n')
   return {
