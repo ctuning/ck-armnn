@@ -25,9 +25,9 @@ using namespace std;
 using namespace CK;
 
 template <typename TData, typename TInConverter, typename TOutConverter>
-class TFLiteBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
+class ArmNNBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
 public:
-    TFLiteBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
+    ArmNNBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
             : Benchmark<TData, TInConverter, TOutConverter>(settings, in_ptr, out_ptr) {
     }
 };
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 
         BenchmarkSettings settings;
 
-        // TODO: learn how to process batches via tflite.
+        // TODO: learn how to process batches
         // currently interpreter->tensor(input_index)->dims[0] = 1
         if (settings.batch_size != 1)
             throw string("Only BATCH_SIZE=1 is currently supported");
@@ -113,11 +113,11 @@ int main(int argc, char* argv[]) {
 
             switch (input_type) {
                 case armnn::DataType::Float32:
-                    benchmark.reset(new TFLiteBenchmark<float, InNormalize, OutCopy>(&settings, (float*)input, (float*)output, 0));
+                    benchmark.reset(new ArmNNBenchmark<float, InNormalize, OutCopy>(&settings, (float*)input, (float*)output, 0));
                     break;
 
                 case armnn::DataType::QuantisedAsymm8:
-                    benchmark.reset(new TFLiteBenchmark<uint8_t, InCopy, OutDequantize>(&settings, (uint8_t*)input, (uint8_t*)output, 0));
+                    benchmark.reset(new ArmNNBenchmark<uint8_t, InCopy, OutDequantize>(&settings, (uint8_t*)input, (uint8_t*)output, 0));
                     break;
 
                 default:
@@ -144,7 +144,7 @@ int main(int argc, char* argv[]) {
 
                 session.measure_begin();
                 if (runtime->EnqueueWorkload(networkIdentifier, inputTensor, outputTensor) != armnn::Status::Success)
-                    throw "Failed to invoke tflite";
+                    throw "Failed to invoke the classifier";
                 session.measure_end_prediction();
 
                 benchmark->save_results(session.batch_files());

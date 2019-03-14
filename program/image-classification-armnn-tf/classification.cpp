@@ -25,9 +25,9 @@ using namespace std;
 using namespace CK;
 
 template <typename TData, typename TInConverter, typename TOutConverter>
-class TFBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
+class ArmNNBenchmark : public Benchmark<TData, TInConverter, TOutConverter> {
 public:
-    TFBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
+    ArmNNBenchmark(const BenchmarkSettings* settings, TData *in_ptr, TData *out_ptr, int input_index)
             : Benchmark<TData, TInConverter, TOutConverter>(settings, in_ptr, out_ptr) {
     }
 };
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
 
         BenchmarkSettings settings;
 
-        // TODO: learn how to process batches via tf.
+        // TODO: learn how to process batches
         // currently interpreter->tensor(input_index)->dims[0] = 1
         if (settings.batch_size != 1)
             throw string("Only BATCH_SIZE=1 is currently supported");
@@ -112,7 +112,7 @@ int main(int argc, char* argv[]) {
             outputTensor = MakeOutputTensors(outputBindingInfo, output);
             inputTensor = MakeInputTensors(inputBindingInfo, input);
 
-            benchmark.reset(new TFBenchmark<float, InNormalize, OutCopy>(&settings, input, output, 0));
+            benchmark.reset(new ArmNNBenchmark<float, InNormalize, OutCopy>(&settings, input, output, 0));
 
             int out_num = outShape[0];
             int out_classes = outShape[1];
@@ -132,7 +132,7 @@ int main(int argc, char* argv[]) {
 
                 session.measure_begin();
                 if (runtime->EnqueueWorkload(networkIdentifier, inputTensor, outputTensor) != armnn::Status::Success)
-                    throw "Failed to invoke tf";
+                    throw "Failed to invoke the classifier";
                 session.measure_end_prediction();
 
                 benchmark->save_results(session.batch_files());

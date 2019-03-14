@@ -109,7 +109,7 @@
       "name": "TensorFlow-Python model and weights", 
       "no_tags": "mobilenet-all", 
       "sort": 30, 
-      "tags": "tensorflowmodel,weights"
+      "tags": "model,tf"
     }
   }, 
   "run_vars": {
