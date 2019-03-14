@@ -106,13 +106,32 @@ int main(int argc, char* argv[]) {
             armnn::IOptimizedNetworkPtr optNet = armnn::Optimize(*network, optOptions, runtime->GetDeviceSpec());
 
             runtime->LoadNetwork(networkIdentifier, std::move(optNet));
-            float *output = new float[outSize];
-            float *input = new float[inSize];
 
-            outputTensor = MakeOutputTensors(outputBindingInfo, output);
+            armnn::DataType input_type = inputBindingInfo.second.GetDataType();
+            armnn::DataType output_type = outputBindingInfo.second.GetDataType();
+            if (input_type != output_type)
+                throw format("Type of graph's input (%d) does not match type of its output (%d).", int(input_type), int(output_type));
+
+            void* input = input_type == armnn::DataType::Float32 ? (void*)new float[inSize] : (void*)new uint8_t[inSize];
+            void* output = output_type == armnn::DataType::Float32 ? (void*)new float[outSize] : (void*)new uint8_t[outSize];
+
             inputTensor = MakeInputTensors(inputBindingInfo, input);
+            outputTensor = MakeOutputTensors(outputBindingInfo, output);
 
-            benchmark.reset(new ArmNNBenchmark<float, InNormalize, OutCopy>(&settings, input, output, 0));
+            switch (input_type) {
+                case armnn::DataType::Float32:
+                    benchmark.reset(new ArmNNBenchmark<float, InNormalize, OutCopy>(&settings, (float*)input, (float*)output, 0));
+                    break;
+
+                case armnn::DataType::QuantisedAsymm8:
+                    benchmark.reset(new ArmNNBenchmark<uint8_t, InCopy, OutDequantize>(&settings, (uint8_t*)input, (uint8_t*)output, 0));
+                    break;
+
+                default:
+                    throw format("Unsupported type of graph's input: %d. "
+                                 "Supported types are: Float32 (%d), UInt8 (%d)",
+                                 int(input_type), int(armnn::DataType::Float32), int(armnn::DataType::QuantisedAsymm8));
+            }
 
             int out_num = outShape[0];
             int out_classes = outShape[1];
