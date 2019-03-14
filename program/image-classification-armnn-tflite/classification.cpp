@@ -46,10 +46,10 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
 
 
 int main(int argc, char* argv[]) {
-    string use_neon             = getenv("USE_NEON");
-    string use_opencl           = getenv("USE_OPENCL");
-    string input_layer_name     = getenv_s("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
-    string output_layer_name    = getenv_s("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
+    bool use_neon                   = getenv_b("USE_NEON");
+    bool use_opencl                 = getenv_b("USE_OPENCL");
+    string input_layer_name         = getenv_s("CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME");
+    string output_layer_name        = getenv_s("CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME");
 
     try {
         init_benchmark();
@@ -74,11 +74,11 @@ int main(int argc, char* argv[]) {
         // Optimize the network for a specific runtime compute device, e.g. CpuAcc, GpuAcc
         //std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
         std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuRef};
-        if( (use_neon == "yes") && (use_opencl == "yes") ) {
+        if( use_neon && use_opencl) {
             optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
-        } else if( use_neon == "yes" ) {
+        } else if( use_neon ) {
             optOptions = {armnn::Compute::CpuAcc};
-        } else if( use_opencl == "yes" ) {
+        } else if( use_opencl ) {
             optOptions = {armnn::Compute::GpuAcc};
         }
 

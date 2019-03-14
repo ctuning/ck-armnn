@@ -75,6 +75,13 @@ inline float getenv_f(const std::string& name) {
   return atof(value);
 }
 
+/// Load an optional boolean value from the environment.
+inline bool getenv_b(const char *name) {
+    std::string value = getenv(name);
+
+    return (value == "YES" || value == "yes" || value == "ON" || value == "on" || value == "1");
+}
+
 /// Dummy `sprintf` like formatting function using std::string.
 /// It uses buffer of fixed length so can't be used in any cases,
 /// generally use it for short messages with numeric arguments.
