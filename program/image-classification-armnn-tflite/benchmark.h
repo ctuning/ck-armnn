@@ -54,10 +54,8 @@ inline void store_value_f(int index, const char* name, float value) {
 /// Load mandatory string value from the environment.
 inline std::string getenv_s(const std::string& name) {
   const char *value = getenv(name.c_str());
-  if (!value) {
-    std::cout << "Required environment variable " << name << " is not set" << std::endl;
+  if (!value)
     throw "Required environment variable " + name + " is not set";
-  }
   return std::string(value);
 }
 
@@ -115,6 +113,7 @@ public:
   const std::string images_dir = getenv_s("RUN_OPT_IMAGE_DIR");
   const std::string images_file = getenv_s("RUN_OPT_IMAGE_LIST");
   const std::string result_dir = getenv_s("RUN_OPT_RESULT_DIR");
+  const std::string data_layout = getenv_s("RUN_OPT_DATA_LAYOUT");
   const int batch_count = getenv_i("RUN_OPT_BATCH_COUNT");
   const int batch_size = getenv_i("RUN_OPT_BATCH_SIZE");
   const int image_size = getenv_i("RUN_OPT_IMAGE_SIZE");
@@ -127,6 +126,7 @@ public:
   BenchmarkSettings() {
     // Print settings
     std::cout << "Graph file: " << graph_file << std::endl;
+    std::cout << "Data layout: " << data_layout << std::endl;
     std::cout << "Image dir: " << images_dir << std::endl;
     std::cout << "Image list: " << images_file << std::endl;
     std::cout << "Image size: " << image_size << std::endl;

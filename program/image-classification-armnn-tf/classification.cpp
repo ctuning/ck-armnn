@@ -86,7 +86,10 @@ int main(int argc, char* argv[]) {
 
         cout << "\nLoading graph..." << endl;
         measure_setup([&]{
-            armnn::TensorShape input_tensor_shape({ 1, input_shape_height, input_shape_width, input_shape_channels }); // NHWC
+            armnn::TensorShape input_tensor_shape =
+                (settings.data_layout == "NHWC") ? armnn::TensorShape({ 1, input_shape_channels, input_shape_height, input_shape_width })
+                                                 : armnn::TensorShape({ 1, input_shape_height, input_shape_width, input_shape_channels });
+
             armnn::INetworkPtr network = parser->CreateNetworkFromBinaryFile(
                 settings.graph_file.c_str(),
                 { { input_layer_name, input_tensor_shape} },
