@@ -52,14 +52,16 @@
       "ignore_return_code": "no",
       "run_time": {
         "fine_grain_timer_file": "tmp-ck-timer.json",
-        "post_process_cmds": [
-          "python $#ck_take_from_{script:b98ee24399ef4c3a}#$postprocess.py"
-        ],
-        "post_process_via_ck": "yes",
-        "pre_process_via_ck": {
+        "post_process_via_ck": {
           "data_uoa": "b98ee24399ef4c3a",
           "module_uoa": "script",
-          "script_name": "preprocess"
+          "script_name": "postprocess"
+        },
+        "pre_process_with_deps": {
+          "data_uoa":       "b98ee24399ef4c3a",
+          "module_uoa":     "script",
+          "script_name":    "preprocess",
+          "function_name":  "ck_preprocess"
         },
         "run_cmd_main": "$#BIN_FILE#$",
         "run_output_files": [
@@ -90,6 +92,30 @@
       "no_tags": "mobilenet-all",
       "sort": 30,
       "tags": "model,tflite"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 100,
+      "tags": "compiler,python"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "NumPy python library",
+      "sort": 110,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "SciPy python library",
+      "sort": 120,
+      "tags": "lib,python-package,scipy"
+    },
+    "lib-python-pillow": {
+      "local": "yes",
+      "name": "Pillow python library",
+      "sort": 130,
+      "tags": "lib,python-package,pillow"
     }
   },
   "run_vars": {
