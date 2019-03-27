@@ -36,7 +36,7 @@ def ck_preprocess(i):
   else:
     new_env['RUN_OPT_GRAPH_FILE'] = MODEL_PATH
 
-  new_env['RUN_OPT_DATA_LAYOUT'] = dep_install_env('weights', 'CK_MODEL_DATA_LAYOUT')
+  new_env['RUN_OPT_DATA_LAYOUT'] = dep_install_env('weights', 'ML_MODEL_DATA_LAYOUT')
 
   print('--------------------------------\n')
   return {
