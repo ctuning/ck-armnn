@@ -3,6 +3,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+#include <stdlib.h>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -18,6 +19,13 @@
 #include "armnnTfParser/ITfParser.hpp"
 
 #include "mnist_loader.hpp"
+
+/// Load an optional boolean value from the environment.
+inline bool getenv_b(const char *name) {
+    std::string value = getenv(name);
+
+    return (value == "YES" || value == "yes" || value == "ON" || value == "on" || value == "1");
+}
 
 
 // Helper function to make input tensors
@@ -38,22 +46,18 @@ armnn::OutputTensors MakeOutputTensors(const std::pair<armnn::LayerBindingId,
 
 int main(int argc, char** argv)
 {
-    if (argc != 5) {
+    bool use_neon                   = getenv_b("USE_NEON");
+    bool use_opencl                 = getenv_b("USE_OPENCL");
+
+    if (argc != 4) {
         std::cerr << "Usage: " << argv[0]
-                  << " backend model"
-                  << " image-directory file-number" << std::endl;
+                  << " model image-directory file-number" << std::endl;
     return 1;
     }
 
-    std::string backend    = argv[1];
-    std::string model      = argv[2];
-    std::string dataDir    = argv[3];
-    std::string fileNumber = argv[4];
-
-    if (backend != "CpuRef" && backend != "CpuAcc" && backend != "GpuAcc" && backend != "CpuGpuAcc") {
-        std::cerr << "Unknown type of 'backend'. Must be CpuRef|CpuAcc|GpuAcc|CpuGpuAcc"<< std::endl;
-        return 1;
-    }
+    std::string model      = argv[1];
+    std::string dataDir    = argv[2];
+    std::string fileNumber = argv[3];
 
     struct stat info;
     if (stat(model.c_str(), &info) != 0) {
@@ -87,12 +91,12 @@ int main(int argc, char** argv)
 
     // Optimize the network for a specific runtime compute device, e.g. CpuAcc, GpuAcc
     std::vector<armnn::BackendId> optOptions = {armnn::Compute::CpuRef};
-    if (backend == "CpuAcc") {
-        optOptions = {armnn::Compute::CpuAcc};
-    } else if (backend == "GpuAcc") {
-        optOptions = {armnn::Compute::GpuAcc};
-    } else if (backend == "CpuGpuAcc") {
+    if( use_neon && use_opencl) {
         optOptions = {armnn::Compute::CpuAcc, armnn::Compute::GpuAcc};
+    } else if( use_neon ) {
+        optOptions = {armnn::Compute::CpuAcc};
+    } else if( use_opencl ) {
+        optOptions = {armnn::Compute::GpuAcc};
     }
     armnn::IRuntime::CreationOptions options;
     armnn::IRuntimePtr runtime = armnn::IRuntime::Create(options);

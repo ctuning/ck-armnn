@@ -1,50 +1,29 @@
-# Classification program for ArmNN
+# MNIST classification example for ArmNN/TF
 
-## Requirements
-
-
-### ArmNN library
-To build this program, you need ArmNN compiled with appropriated API (NEON, OPENCL)
+## Compile (4 versions) :
 
 ```
-$ ck install package --tags=lib,armcl,viascons \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_path=-neon-opencl
+$ ck compile program:mnist-armnn-tf                                     # compile reference implementation (works on Intel)
 
-$ ck install package --tags=lib,armnn \
---env.USE_NEON=1 --env.USE_OPENCL=1 \
---extra_tags=vneon,vopencl \
---extra_version=-neon-opencl
+$ ck compile program:mnist-armnn-tf --env.USE_NEON                      # compile for using CPU acceleration (Arm only)
+
+$ ck compile program:mnist-armnn-tf --env.USE_OPENCL                    # compile for using GPU acceleration (Arm only)
+
+$ ck compile program:mnist-armnn-tf --env.USE_NEON --env.USE_OPENCL     # compile for using both CPU and GPU acceleration
 ```
 
-**NB:** See corresponding [README](https://github.com/dividiti/ck-armnn/blob/master/README.md) for details
-
-### Dataset and model package
-
-Install a package providing dataset and model files:
+## Run (4 versions, should match `USE_*` parameters during compilation) :
 
 ```
-$ ck install package --tags=armnn,dataset,model
+$ ck run program:mnist-armnn-tf --env.CK_FILE_NUMBER=0                  # run reference implementation (works on Intel)
+
+$ ck run program:mnist-armnn-tf --env.USE_NEON                          # run for using CPU acceleration (Arm only)
+
+$ ck run program:mnist-armnn-tf --env.USE_OPENCL --env.CK_FILE_NUMBER=0 # run for using GPU acceleration (Arm only)
+
+$ ck run program:mnist-armnn-tf --env.USE_NEON --env.USE_OPENCL         # run for using both CPU and GPU acceleration
 ```
 
-## Compile
+## Note:
 
-```
-$ ck compile program:mnist-armnn-tf
-```
-
-## Run
-
-```
-$ ck run program:mnist-armnn-tf --env.CK_FILE_NUMBER=0 --env.CK_BACKEND="CpuRef"
-```
-**Here:**
- - CK_FILE_NUMBER - file number in dataset
- - CK_BACKEND - type of backend
-   - CpuRef - default
-   - CpuAcc - NEON
-   - GpuAcc - OpenCL
-   - CpuGpuAcc - NEON + OpenCL
-
-**NB:** The maximum valid file number is 9999.
+`CK_FILE_NUMBER` is the file number in MNIST dataset (0..9999)
