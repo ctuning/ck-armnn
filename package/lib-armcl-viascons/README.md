@@ -2,7 +2,7 @@
 
 ## This package builds and installs a desired version of Arm CL using SCons
 
-Selection of the desired release and desired backend support is now donw via combining relevant tags.
+Selection of the desired release and desired backend support is now done via combining relevant tags.
 
 ### Release tags:
 

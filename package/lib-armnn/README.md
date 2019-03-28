@@ -2,7 +2,7 @@
 
 ## This package builds and installs a desired version of ArmNN library
 
-Selection of the desired release, desired frontend support and desired backend is now donw via combining relevant tags.
+Selection of the desired release, desired frontend support and desired backend is now done via combining relevant tags.
 
 ### Release tags:
 
