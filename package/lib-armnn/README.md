@@ -30,6 +30,8 @@ ck install package --tags=lib,armnn,dev,tflite,neon,opencl 		# Development relea
 
 ## Notes:
 
-1. If you are intending to simultaneously maintain same-release versions with and without `neon`/`opencl` support, start compiling ones without the support, gradually adding these capabilities. It is currently a known CK constraint that a new package should not be added with a subset of tags of another currently installed environment.
+1. Asking for a non-trivial backend support (either `neon`, `opencl` or both) will automatically trigger building of the same-release version of ArmCL. This should only be attempted on an Arm platform (whereas a "backendless" version should compile and run on an Intel platform as well).
 
-2. The same applies to same-release versions with and without specific frontends: if you want to have them simultaneously, make sure you never build a subset of tags after you've built its proper superset.
+2. If you are intending to simultaneously maintain same-release versions with and without `neon`/`opencl` support, start compiling ones without the support, gradually adding these capabilities. It is currently a known CK constraint that a new package should not be added with a subset of tags of another currently installed environment.
+
+3. The same applies to same-release versions with and without specific frontends: if you want to have them simultaneously, make sure you never build a subset of tags after you've built its proper superset.
