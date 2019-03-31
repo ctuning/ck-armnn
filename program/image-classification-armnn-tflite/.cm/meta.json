@@ -10,7 +10,7 @@
     },
     "lib-armnn": {
       "local": "yes",
-      "name": "ArmNN library",
+      "name": "ArmNN library (with TFLite support)",
       "sort": 40,
       "tags": "lib,armnn,tflite,rel.19.02",
       "update_tags_if_env" : {
@@ -135,10 +135,10 @@
     "classification.cpp"
   ],
   "tags": [
-    "tensorflow-lite-classification",
+    "image-classification",
     "armnn"
   ],
   "target_file": "classification",
   "template": "yes",
-  "template_type": "image classification via TFLite (C++)"
+  "template_type": "Image Classification via ArmNN (with TFLite support)"
 }
