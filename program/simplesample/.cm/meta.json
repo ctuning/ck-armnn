@@ -35,8 +35,9 @@
     "SimpleSample.cpp"
   ], 
   "tags": [
-    "test-soft", 
-    "test-armnn"
+    "test",
+    "armnn",
+    "lang-cpp"
   ], 
   "target_file": "SimpleSample"
 }

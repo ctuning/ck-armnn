@@ -53,8 +53,11 @@
     "mnist_tf.cpp"
   ],
   "tags": [
-    "test-soft",
-    "test-mnist-armnn-tensorflow"
+    "test",
+    "mnist",
+    "tf",
+    "armnn",
+    "lang-cpp"
   ],
   "target_file": "mnist"
 }

@@ -137,7 +137,8 @@
   "tags": [
     "image-classification",
     "tflite",
-    "armnn"
+    "armnn",
+    "lang-cpp"
   ],
   "target_file": "classification",
   "template": "yes",

@@ -130,7 +130,8 @@
   "tags": [
     "image-classification",
     "onnx",
-    "armnn"
+    "armnn",
+    "lang-cpp"
   ], 
   "target_file": "classification", 
   "template": "yes", 
