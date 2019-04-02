@@ -29,6 +29,7 @@
     "windows"
   ],
   "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "minimal": {
       "run_time": {
