@@ -128,7 +128,8 @@
     "classification.cpp"
   ], 
   "tags": [
-    "onnx-classification", 
+    "image-classification",
+    "onnx",
     "armnn"
   ], 
   "target_file": "classification", 

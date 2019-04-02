@@ -136,6 +136,7 @@
   ],
   "tags": [
     "image-classification",
+    "tflite",
     "armnn"
   ],
   "target_file": "classification",

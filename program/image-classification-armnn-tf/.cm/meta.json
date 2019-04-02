@@ -129,7 +129,8 @@
     "classification.cpp"
   ], 
   "tags": [
-    "tensorflow-classification", 
+    "image-classification",
+    "tf",
     "armnn"
   ], 
   "target_file": "classification", 
