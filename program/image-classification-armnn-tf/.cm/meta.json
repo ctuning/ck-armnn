@@ -110,7 +110,7 @@
       "name": "TensorFlow-Python model and weights", 
       "no_tags": "mobilenet-all", 
       "sort": 30, 
-      "tags": "model,tf"
+      "tags": "model,tf,image-classification"
     }
   }, 
   "run_vars": {

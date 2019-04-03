@@ -109,7 +109,7 @@
       "local": "yes", 
       "name": "Onnx model", 
       "sort": 30, 
-      "tags": "model,onnx"
+      "tags": "model,onnx,image-classification"
     }
   }, 
   "run_vars": {

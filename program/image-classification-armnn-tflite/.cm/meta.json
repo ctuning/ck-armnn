@@ -90,7 +90,7 @@
       "name": "TensorFlow Lite model",
       "no_tags": "mobilenet-all",
       "sort": 30,
-      "tags": "model,tflite"
+      "tags": "model,tflite,image-classification"
     },
     "python": {
       "local": "yes",
