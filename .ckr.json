@@ -5,6 +5,6 @@
   "data_name": "ck-armnn",
   "dict": {
     "shared": "git",
-    "url": "git@github.com:dividiti/ck-armnn.git"
+    "url": "https://github.com/ctuning/ck-armnn.git"
   }
 }
