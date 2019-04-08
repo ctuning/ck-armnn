@@ -111,6 +111,9 @@
   ], 
   "variations": {
     "release": {
+        "extra_env": {
+            "PACKAGE_VERSION": "release"
+        }
     },
     "rel.18.08": {
         "extra_env": {
