@@ -1,3 +1,5 @@
+[![Travis Build Status](https://travis-ci.org/ctuning/ck-armnn.svg?branch=master)](https://travis-ci.org/ctuning/ck-armnn)
+
 # ArmNN installation
 
 To install a particular version of ArmNN we have to combine three kinds of tags:
