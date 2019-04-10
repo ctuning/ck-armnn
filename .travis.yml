@@ -57,6 +57,7 @@ install:
     - echo | ck detect soft:tool.cmake --first_match                                # avoid manual selection
     - echo | ck detect soft:compiler.gcc --first_match                              # avoid manual selection
     - ck install package:lib-boost-1.64.0-for-armnn > boost_install.log             # the log is too long for Travis to survive
+    - ck install package:lib-protobuf-3.5.1-host                                    # avoid manual selection
     - ck install package --tags=lib,armnn,rel.19.02,tf,tflite,onnx
 
 script:
