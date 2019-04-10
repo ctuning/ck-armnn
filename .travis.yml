@@ -13,6 +13,7 @@ python:
 addons:
     apt:
         packages:
+            - g++-7
             - python-pip
         sources:
             - ubuntu-toolchain-r-test
