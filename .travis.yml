@@ -56,10 +56,14 @@ install:
     - ck detect soft:compiler.python --full_path=`which ${PYTHON_EXE}`              # pick the one Travis has set for us in the PATH
     - echo | ck detect soft:tool.cmake --first_match                                # avoid manual selection
     - echo | ck detect soft:compiler.gcc --first_match                              # avoid manual selection
+    - ck install package:lib-boost-1.64.0-for-armnn > boost_install.log             # the log is too long for Travis to survive
     - ck install package --tags=lib,armnn,rel.19.02,tf,tflite,onnx
 
 script:
     - ck show env                                                                   # show everything that has been detected or installed
     - ck compile program:simplesample
     - echo 7 | ck run program:simplesample
+
+after_failure:
+    - tail -n 500 boost_install.log
 
