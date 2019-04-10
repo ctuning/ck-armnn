@@ -5,6 +5,11 @@
   "data_name": "ck-armnn",
   "dict": {
     "shared": "git",
-    "url": "https://github.com/ctuning/ck-armnn.git"
+    "url": "https://github.com/ctuning/ck-armnn.git",
+    "repo_deps": [
+      {
+        "repo_uoa": "ck-autotuning"
+      }
+    ]
   }
 }
