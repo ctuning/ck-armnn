@@ -8,7 +8,7 @@
     "url": "https://github.com/ctuning/ck-armnn.git",
     "repo_deps": [
       {
-        "repo_uoa": "ck-autotuning"
+        "repo_uoa": "ck-math"
       }
     ]
   }
