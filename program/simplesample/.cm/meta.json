@@ -15,7 +15,7 @@
     }
   }, 
   "compiler_env": "CK_CXX_FULL_PATH", 
-  "compiler_flags_as_env": "$<<CK_CXX_COMPILER_STDLIB>>$", 
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>> $<<CK_CXX_COMPILER_STDLIB>>$",
   "data_name": "simplesample", 
   "extra_ld_vars": "$<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn -lpthread", 
   "main_language": "cpp", 
