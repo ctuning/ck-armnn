@@ -81,7 +81,9 @@ install:
 script:
     - ck show env                                                                   # show everything that has been detected or installed
     - ck compile program:simplesample
-    - echo 7 | ck run program:simplesample
+    - echo 14 | ck run program:simplesample                                         # this program doesn't use any frontends
+    - ck compile program:mnist-armnn-tf
+    - ck run program:mnist-armnn-tf                                                 # this program uses the TF frontend
 
 after_failure:
     - tail -n 500 boost_install.log
