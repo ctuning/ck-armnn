@@ -25,10 +25,12 @@ env:
 matrix:
     include:
         - os: osx
+          osx_image: xcode10.2
           language: generic
           python:   2.7
           env:      WANTED_PYTHON_VERSION=2.7 TRAVIS_CK_CXX_COMPILER=llvm ARMNN_SUPPORTED_FRONTENDS=tf,onnx
         - os: osx
+          osx_image: xcode10.2
           language: generic
           python:   3.6
           env:      WANTED_PYTHON_VERSION=3.6 TRAVIS_CK_CXX_COMPILER=llvm ARMNN_SUPPORTED_FRONTENDS=tf,onnx
