@@ -61,14 +61,14 @@ int main(int argc, char** argv)
 
     struct stat info;
     if (stat(model.c_str(), &info) != 0) {
-        printf("%s is not a file\n", model);
+        printf("%s is not a file\n", model.c_str());
         return 1;
     }
 
     if (dataDir.back() != '/') dataDir.append("/");
     stat(dataDir.c_str(), &info);
     if(!(info.st_mode & S_IFDIR)) {
-        printf("%s is not a directory\n", dataDir);
+        printf("%s is not a directory\n", dataDir.c_str());
         return 1;
     }
 
