@@ -18,6 +18,21 @@ addons:
         sources:
             - ubuntu-toolchain-r-test
 
+env:
+    matrix:
+        - TRAVIS_CK_CXX_COMPILER=gcc ARMNN_SUPPORTED_FRONTENDS=tf,tflite,onnx
+
+matrix:
+    include:
+        - os: osx
+          language: generic
+          python:   2.7
+          env:      WANTED_PYTHON_VERSION=2.7 TRAVIS_CK_CXX_COMPILER=llvm ARMNN_SUPPORTED_FRONTENDS=tf,onnx
+        - os: osx
+          language: generic
+          python:   3.6
+          env:      WANTED_PYTHON_VERSION=3.6 TRAVIS_CK_CXX_COMPILER=llvm ARMNN_SUPPORTED_FRONTENDS=tf,onnx
+
 before_install:
     - |
         if [ $TRAVIS_OS_NAME == "osx" ]; then
@@ -56,10 +71,10 @@ install:
     - echo "$CK_PLATFORM_NAME" | ck detect platform.os --update_platform_init       # set the platform to generic-linux (1) or generic-macos (2)
     - ck detect soft:compiler.python --full_path=`which ${PYTHON_EXE}`              # pick the one Travis has set for us in the PATH
     - echo | ck detect soft:tool.cmake --first_match                                # avoid manual selection
-    - echo | ck detect soft:compiler.gcc --first_match                              # avoid manual selection
+    - echo | ck detect soft:compiler.${TRAVIS_CK_CXX_COMPILER} --first_match        # avoid manual selection
     - ck install package:lib-boost-1.64.0-for-armnn > boost_install.log             # the log is too long for Travis to survive
     - ck install package:lib-protobuf-3.5.1-host                                    # avoid manual selection
-    - ck install package --tags=lib,armnn,rel.19.02,tf,tflite,onnx
+    - ck install package --tags=lib,armnn,rel.19.02,${ARMNN_SUPPORTED_FRONTENDS}
 
 script:
     - ck show env                                                                   # show everything that has been detected or installed
