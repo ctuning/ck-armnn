@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0823f08..dcb9f9f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,8 @@
+ cmake_minimum_required (VERSION 3.0.2) # 3.0.2 required for return() statement used in AddDllCopyCommands.cmake
+ project(armnn)
+ 
++SET(CMAKE_INSTALL_PREFIX "$ENV{ARMNN_TARGET_DIR}")
++
+ set(additional_cmake_files)
+ list(APPEND additional_cmake_files
+     cmake/Utils.cmake
