@@ -22,7 +22,6 @@
   }, 
   "deps": {
     "lib-boost": {
-      "force_target_as_host": "yes",
       "local": "yes", 
       "name": "Boost library", 
       "skip_default": "yes", 
