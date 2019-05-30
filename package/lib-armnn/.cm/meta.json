@@ -78,6 +78,7 @@
       ]
     },
     "tensorflow-source": {
+      "force_target_as_host": "yes",
       "enable_if_env": [
         { "USE_TF":     ["on", "ON", "yes", "YES", "1"] },
         { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
