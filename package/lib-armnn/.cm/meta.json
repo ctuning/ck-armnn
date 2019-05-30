@@ -12,6 +12,7 @@
       "PACKAGE_SUB_DIR": "src", 
       "PACKAGE_URL": "https://github.com/arm-software/armnn",
       "PACKAGE_VERSION": "release",
+      "CK_ARMNN_LINKING_MODE": "SHARED",
       "USE_NEON": "NO",
       "USE_OPENCL": "NO",
       "USE_TF": "NO",
@@ -123,7 +124,10 @@
       "tags": "compiler,lang-cpp"
     }
   }, 
-  "end_full_path_universal": "install$#sep#$lib$#sep#$libarmnn$#file_ext_dll#$", 
+  "end_full_path_universal": [
+    "install$#sep#$lib$#sep#$libarmnn$#file_ext_dll#$", 
+    "install$#sep#$lib$#sep#$libarmnn$#file_ext_lib#$" 
+  ],
   "need_cpu_info": "yes", 
   "only_for_host_os_tags": [
     "linux"
@@ -196,6 +200,16 @@
     "onnx": {
         "extra_env": {
             "USE_ONNX": "YES"
+        }
+    },
+    "shared": {
+        "extra_env": {
+            "CK_ARMNN_LINKING_MODE": "SHARED"
+        }
+    },
+    "static": {
+        "extra_env": {
+            "CK_ARMNN_LINKING_MODE": "STATIC"
         }
     }
   },
