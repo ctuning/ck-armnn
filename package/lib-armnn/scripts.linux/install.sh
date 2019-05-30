@@ -89,6 +89,15 @@ else
     CMAKE_FOR_OPENCL=""
 fi
 
+################ OSX's "native" LLVM support: ########################
+
+if [ "$CK_DLL_EXT" == ".dylib" ] && [ -n "$CK_ENV_COMPILER_LLVM_SET" ]
+then
+    UNIT_TESTS_REQUIRED="NO"
+else
+    UNIT_TESTS_REQUIRED="YES"
+fi
+
 ############################################################
 echo ""
 echo "Running cmake for ArmNN ..."
@@ -112,7 +121,8 @@ cmake ${ARMNN_SOURCE_DIR} \
     -DPROTOBUF_ROOT=${CK_ENV_LIB_PROTOBUF_HOST} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
-    -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR}
+    -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR} \
+    -DBUILD_UNIT_TESTS=${UNIT_TESTS_REQUIRED}
 
 exit_if_error
 
