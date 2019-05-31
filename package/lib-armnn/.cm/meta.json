@@ -57,8 +57,8 @@
     }, 
     "tensorflow-source": {
       "enable_if_env": [
-        { "USE_TF":     ["on", "ON", "yes", "YES", "1"] },
-        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
+        { "USE_TF":     ["on", "ON", "yes", "YES", "true", "TRUE", "1"] },
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
       "local": "yes", 
       "name": "Tensorflow source", 
@@ -67,8 +67,8 @@
     },
     "lib-armcl-variation": {
       "enable_if_env": [
-        { "USE_NEON":     ["on", "ON", "yes", "YES", "1"] },
-        { "USE_OPENCL":   ["on", "ON", "yes", "YES", "1"] }
+        { "USE_NEON":     ["on", "ON", "yes", "YES", "true", "TRUE", "1"] },
+        { "USE_OPENCL":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
       "local": "yes",
       "name": "Arm Compute Library (either release or development version) with Neon or OpenCL support",
@@ -80,13 +80,13 @@
         "rel.19.02":    [ { "PACKAGE_VERSION": "19.02" } ],
         "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
-        "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "1"] } ],
-        "opencl":       [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "1"] } ]
+        "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ],
+        "opencl":       [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ]
       }
     },
     "lib-flatbuffers": {
       "enable_if_env": [
-        { "USE_TFLITE": ["on", "ON", "yes", "YES", "1"] }
+        { "USE_TFLITE": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
       "local": "yes",
       "name": "Google FlatBuffers library",
