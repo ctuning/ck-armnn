@@ -78,6 +78,7 @@
         "rel.18.08":    [ { "PACKAGE_VERSION": "18.08" } ],
         "rel.18.11":    [ { "PACKAGE_VERSION": "18.11" } ],
         "rel.19.02":    [ { "PACKAGE_VERSION": "19.02" } ],
+        "rel.19.05":    [ { "PACKAGE_VERSION": "19.05" } ],
         "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ],
@@ -141,6 +142,12 @@
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.02",
             "PACKAGE_VERSION": "19.02"
+        }
+    },
+    "rel.19.05": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v19.05",
+            "PACKAGE_VERSION": "19.05"
         }
     },
     "dev": {
