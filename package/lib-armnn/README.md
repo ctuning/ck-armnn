@@ -21,11 +21,11 @@ Please select any combination, possibly empty, of the following: { `neon` , `ope
 ```
 ck install package --tags=lib,armnn,rel.18.08,tf                # Release 18.08, TF frontend, no acceleration (reference implementation)
 
-ck install package --tags=lib,armnn,rel.19.05,tf,tflite,neon    # Release 19.05, TF and TFlite frontends, CPU acceleration
+ck install package --tags=lib,armnn,rel.19.05,tf,tflite,neon    # Release 19.05, TF and TFLite frontends, CPU acceleration
 
 ck install package --tags=lib,armnn,release,tf,onnx,opencl      # Current release, TF and ONNX frontends, GPU acceleration
 
-ck install package --tags=lib,armnn,dev,tflite,neon,opencl      # Current development, TFlite frontend, CPU and GPU acceleration
+ck install package --tags=lib,armnn,dev,tflite,neon,opencl      # Current development, TFLite frontend, CPU and GPU acceleration
 ```
 
 ## Notes:
