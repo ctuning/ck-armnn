@@ -17,6 +17,6 @@ if [ "$USE_TFLITE" == "YES" ] && [ "$PACKAGE_VERSION" == "19.05" ]
 then
     echo ""
     echo "Copying 'libarmnnTfLiteParser.so' to '${INSTALL_DIR}/install/lib' ..."
-#    cp ${INSTALL_DIR}/obj/libarmnnTfLiteParser.so ${INSTALL_DIR}/install/lib/
+    cp ${INSTALL_DIR}/obj/libarmnnTfLiteParser.so ${INSTALL_DIR}/install/lib/
     exit_if_error
 fi
