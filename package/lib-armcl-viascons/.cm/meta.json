@@ -18,9 +18,16 @@
   "deps": {
     "scons": {
       "local": "yes",
+      "force_target_as_host": "yes",
       "name": "SCons tool",
       "sort": 10,
       "tags": "tool,scons"
+    },
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 20,
+      "tags": "compiler,lang-cpp"
     }
   },
   "end_full_path_universal": "src$#sep#$build$#sep#$libarm_compute$#file_ext_dll#$", 
@@ -29,7 +36,8 @@
     "linux"
   ], 
   "only_for_target_os_tags": [
-    "linux"
+    "linux",
+    "android"
   ], 
   "process_script": "install", 
   "soft_uoa": "lib.armcl", 
