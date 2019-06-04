@@ -6,7 +6,7 @@ Selection of the desired release and desired backend support is now done via com
 
 ### Release tags:
 
-Please select exactly one of the following: { `release` | `rel.18.08` | `rel.18.11` | `rel.19.02` | `dev` }
+Please select exactly one of the following: { `release` | `rel.18.08` | `rel.18.11` | `rel.19.02` | `rel.19.05` | `dev` }
 
 ### Backend (CPU and GPU acceleration) tags:
 
@@ -15,13 +15,13 @@ Please select any combination, possibly empty, of the following: { `neon` , `ope
 
 ## Examples:
 ```
-ck install package --tags=lib,armcl,viascons,rel.18.11			# Release 18.11 without acceleration (reference implementation)
+ck install package --tags=lib,armcl,viascons,rel.18.11          # Release 18.11 without acceleration (reference implementation)
 
-ck install package --tags=lib,armcl,viascons,rel.19.02,neon		# Release 19.02 with CPU acceleration
+ck install package --tags=lib,armcl,viascons,rel.19.02,neon     # Release 19.02 with CPU acceleration
 
-ck install package --tags=lib,armcl,viascons,release,opencl		# Current release with GPU acceleration
+ck install package --tags=lib,armcl,viascons,release,opencl     # Current release with GPU acceleration
 
-ck install package --tags=lib,armcl,viascons,dev,neon,opencl	# Development release with CPU and GPU acceleration
+ck install package --tags=lib,armcl,viascons,dev,neon,opencl    # Current development with CPU and GPU acceleration
 ```
 
 ## Note:

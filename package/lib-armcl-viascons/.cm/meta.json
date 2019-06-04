@@ -18,18 +18,29 @@
   "deps": {
     "scons": {
       "local": "yes",
+      "force_target_as_host": "yes",
       "name": "SCons tool",
       "sort": 10,
       "tags": "tool,scons"
+    },
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 20,
+      "tags": "compiler,lang-cpp"
     }
   },
-  "end_full_path_universal": "src$#sep#$build$#sep#$libarm_compute$#file_ext_dll#$", 
+  "end_full_path_universal": [
+    "install$#sep#$lib$#sep#$libarm_compute$#file_ext_dll#$",
+    "install$#sep#$lib$#sep#$libarm_compute-static$#file_ext_lib#$"
+  ],
   "need_cpu_info": "yes", 
   "only_for_host_os_tags": [
     "linux"
   ], 
   "only_for_target_os_tags": [
-    "linux"
+    "linux",
+    "android"
   ], 
   "process_script": "install", 
   "soft_uoa": "lib.armcl", 
@@ -58,6 +69,12 @@
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.02",
             "PACKAGE_VERSION": "19.02"
+        }
+    },
+    "rel.19.05": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v19.05",
+            "PACKAGE_VERSION": "19.05"
         }
     },
     "dev": {

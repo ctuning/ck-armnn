@@ -6,7 +6,7 @@ Selection of the desired release, desired frontend support and desired backend i
 
 ### Release tags:
 
-Please select exactly one of the following: { `release` | `rel.18.08` | `rel.18.11` | `rel.19.02` | `dev` }
+Please select exactly one of the following: { `release` | `rel.18.08` | `rel.18.11` | `rel.19.02` | `rel.19.05` | `dev` }
 
 ### Frontend tags:
 
@@ -19,13 +19,13 @@ Please select any combination, possibly empty, of the following: { `neon` , `ope
 
 ## Examples:
 ```
-ck install package --tags=lib,armnn,rel.18.08,tf				# Release 18.08, TF frontend, no acceleration (reference implementation)
+ck install package --tags=lib,armnn,rel.18.08,tf                # Release 18.08, TF frontend, no acceleration (reference implementation)
 
-ck install package --tags=lib,armnn,rel.19.02,tf,tflite,neon 	# Release 19.02, TF and TFlite frontends, CPU acceleration
+ck install package --tags=lib,armnn,rel.19.05,tf,tflite,neon    # Release 19.05, TF and TFLite frontends, CPU acceleration
 
-ck install package --tags=lib,armnn,release,tf,onnx,opencl		# Current release, TF and ONNX frontends, GPU acceleration
+ck install package --tags=lib,armnn,release,tf,onnx,opencl      # Current release, TF and ONNX frontends, GPU acceleration
 
-ck install package --tags=lib,armnn,dev,tflite,neon,opencl 		# Development release, TFlite frontend, CPU and GPU acceleration
+ck install package --tags=lib,armnn,dev,tflite,neon,opencl      # Current development, TFLite frontend, CPU and GPU acceleration
 ```
 
 ## Notes:
