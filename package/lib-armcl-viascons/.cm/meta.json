@@ -30,7 +30,10 @@
       "tags": "compiler,lang-cpp"
     }
   },
-  "end_full_path_universal": "src$#sep#$build$#sep#$libarm_compute$#file_ext_dll#$", 
+  "end_full_path_universal": [
+    "install$#sep#$lib$#sep#$libarm_compute$#file_ext_dll#$",
+    "install$#sep#$lib$#sep#$libarm_compute-static$#file_ext_lib#$"
+  ],
   "need_cpu_info": "yes", 
   "only_for_host_os_tags": [
     "linux"
