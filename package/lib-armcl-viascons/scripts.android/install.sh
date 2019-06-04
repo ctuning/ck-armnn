@@ -37,7 +37,7 @@ fi
 
 if [ "$CK_ANDROID_NDK_ROOT_DIR" != "" ]
 then
-    $CK_ANDROID_NDK_ROOT_DIR/build/tools/make_standalone_toolchain.py --arch arm64 --install-dir ${INSTALL_DIR}/standalone_toolchains/arm64
+    $CK_ANDROID_NDK_ROOT_DIR/build/tools/make_standalone_toolchain.py --api 24 --arch arm64 --install-dir ${INSTALL_DIR}/standalone_toolchains/arm64
 fi
 
 cd ${ARMCL_SOURCE_DIR}
