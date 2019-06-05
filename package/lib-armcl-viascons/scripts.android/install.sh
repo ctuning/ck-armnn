@@ -35,11 +35,6 @@ else
     ARMCL_SCONS_INTERNAL_OPENCL=""
 fi
 
-if [ "$CK_ANDROID_NDK_ROOT_DIR" != "" ]
-then
-    $CK_ANDROID_NDK_ROOT_DIR/build/tools/make_standalone_toolchain.py --api 24 --arch arm64 --install-dir ${INSTALL_DIR}/standalone_toolchains/arm64
-fi
-
 cd ${ARMCL_SOURCE_DIR}
 
 if [ "$CK_COMPILER_TOOLCHAIN_NAME" == "clang" ]
@@ -56,7 +51,7 @@ scons -j ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-1} \
     extra_cxx_flags="-fPIC" \
     build="cross_compile" \
     os="android" \
-    toolchain_prefix="${INSTALL_DIR}/standalone_toolchains/arm64/bin/aarch64-linux-android-" \
+    toolchain_prefix="${CK_ENV_STANDALONE_TOOLCHAIN_ROOT}/bin/aarch64-linux-android-" \
     benchmark_tests=0 \
     validation_tests=0 \
     examples=0 \
