@@ -28,6 +28,12 @@
       "name": "C++ compiler",
       "sort": 20,
       "tags": "compiler,lang-cpp"
+    },
+    "standalone-toolchain": {
+      "local": "yes",
+      "name": "NDK standalone toolchain",
+      "sort": 30,
+      "tags": "ndk,standalone-toolchain"
     }
   },
   "end_full_path_universal": [
