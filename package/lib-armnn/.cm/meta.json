@@ -28,7 +28,7 @@
       "skip_default": "yes", 
       "add_dict": "yes",
       "sort": 10, 
-      "tags": "lib,boost,for-armnn-static",
+      "tags": "lib,boost,for-armnn",
       "version_from": [
         1,
         64,
