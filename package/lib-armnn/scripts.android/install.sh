@@ -8,11 +8,14 @@ rm -rf "${ARMNN_BUILD_DIR}"
 mkdir ${ARMNN_BUILD_DIR}
 cd ${ARMNN_BUILD_DIR}
 
+# To understand why we need DBOOST_LOG_DYN_LINK see the following document:
+#       https://stackoverflow.com/questions/23137637/linker-error-while-linking-boost-log-tutorial-undefined-references
+
 cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_SYSTEM_NAME=Android \
     -DCMAKE_ANDROID_ARCH_ABI=${CK_ANDROID_ABI} \
     -DCMAKE_ANDROID_STANDALONE_TOOLCHAIN=${CK_ENV_STANDALONE_TOOLCHAIN_ROOT} \
-    -DCMAKE_CXX_FLAGS="-fPIE -fPIC" \
+    -DCMAKE_CXX_FLAGS="-fPIE -fPIC -DBOOST_LOG_DYN_LINK=1" \
     -DCMAKE_EXE_LINKER_FLAGS="-pie -llog" \
     -DBOOST_ROOT=${CK_ENV_LIB_BOOST} \
     -DCMAKE_EXE_LINKER_FLAGS="${CK_LINKER_FLAGS_ANDROID_TYPICAL}  ${CK_COMPILER_FLAG_PTHREAD_LIB}" \
