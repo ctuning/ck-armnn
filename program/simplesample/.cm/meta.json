@@ -1,5 +1,6 @@
 {
   "backup_data_uid": "f34d649b8bbb846a", 
+  "pass_env_to_resolve": "yes",
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -8,6 +9,7 @@
       "tags": "compiler,lang-cpp"
     }, 
     "lib-armnn": {
+      "comment": "Dynamic library added automatically to the Android-push list due to 'dynamic_library' customization",
       "local": "yes", 
       "name": "ArmNN library", 
       "sort": 20, 
@@ -17,7 +19,7 @@
   "compiler_env": "CK_CXX",
   "compiler_flags_as_env": "$<<CK_CXX_COMPILER_STDLIB>>$ $<<CK_COMPILER_FLAG_CPP14>>$",
   "data_name": "simplesample", 
-  "extra_ld_vars": "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$ $<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_BOOST_LIB>>$ -lboost_log -lboost_filesystem -lboost_atomic -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lboost_system -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn",
+  "extra_ld_vars": "-pie $<<CK_ENV_LIB_STDCPP_DYNAMIC>>$ $<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_BOOST_LIB>>$ -lboost_log -lboost_filesystem -lboost_atomic -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lboost_system -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn",
   "main_language": "cpp", 
   "only_for_target_os_tags": [
     "android",
@@ -26,10 +28,51 @@
   ], 
   "process_in_tmp": "yes", 
   "program": "yes",
+  "run_deps": {
+    "lib-boost": {
+      "comment": "Although transitive dependency of ArmNN, still have to add it manually in order to push its dynamic libraries to Android",
+      "local": "yes",
+      "name": "Boost library",
+      "skip_default": "yes",
+      "add_dict": "yes",
+      "sort": 30,
+      "tags": "lib,boost,for-armnn",
+      "version_from": [
+        1,
+        64,
+        0
+      ],
+      "version_to": [
+        1,
+        64,
+        0
+      ],
+      "only_for_target_os_tags": [
+        "android"
+      ]
+    }
+  },
   "run_cmds": {
-    "minimal": {
+    "default": {
       "run_time": {
-        "run_cmd_main": "$#BIN_FILE#$"
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_input_files": [
+            "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_atomic.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_chrono.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_date_time.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_filesystem.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log_setup.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_prg_exec_monitor.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_program_options.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_regex.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_system.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_thread.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_timer.so.1.64.0",
+            "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_unit_test_framework.so.1.64.0"
+        ]
       }
     }
   }, 
