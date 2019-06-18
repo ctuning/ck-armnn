@@ -23,8 +23,10 @@ int main()
     float weightsData[] = {1.0f}; // Identity
     TensorInfo weightsInfo(TensorShape({1, 1}), DataType::Float32);
     armnn::ConstTensor weights(weightsInfo, weightsData);
-    IConnectableLayer *fullyConnected = myNetwork->AddFullyConnectedLayer(fullyConnectedDesc, weights,
-                                                                          "fully connected");
+    IConnectableLayer *fullyConnected = myNetwork->AddFullyConnectedLayer(fullyConnectedDesc,
+                                                                            weights,
+                                                                            // EmptyOptional(), // rel.19.05 prefers this line, but rel.19.02 does not yet support it
+                                                                            "fully connected");
 
     IConnectableLayer *InputLayer = myNetwork->AddInputLayer(0);
     IConnectableLayer *OutputLayer = myNetwork->AddOutputLayer(0);
