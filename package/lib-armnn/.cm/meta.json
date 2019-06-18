@@ -28,6 +28,9 @@
       "add_dict": "yes",
       "sort": 10, 
       "tags": "lib,boost,for-armnn",
+      "update_tags_if_env": {
+        "shared": [ { "CK_TARGET_OS_ID": "android" } ]
+      },
       "version_from": [
         1,
         64,
