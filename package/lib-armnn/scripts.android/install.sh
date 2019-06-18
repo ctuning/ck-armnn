@@ -11,7 +11,8 @@ cd ${ARMNN_BUILD_DIR}
 # To understand why we need DBOOST_LOG_DYN_LINK see the following document:
 #       https://stackoverflow.com/questions/23137637/linker-error-while-linking-boost-log-tutorial-undefined-references
 
-cmake ${ARMNN_SOURCE_DIR} \
+${CK_ENV_TOOL_CMAKE_BIN}/cmake ${ARMNN_SOURCE_DIR} \
+    -DCMAKE_CROSSCOMPILING=YES \
     -DCMAKE_SYSTEM_NAME=Android \
     -DCMAKE_ANDROID_ARCH_ABI=${CK_ANDROID_ABI} \
     -DCMAKE_ANDROID_STANDALONE_TOOLCHAIN=${CK_ENV_STANDALONE_TOOLCHAIN_ROOT} \
@@ -22,5 +23,5 @@ cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_INSTALL_PREFIX:PATH="${ARMNN_TARGET_DIR}" \
     -DBoost_NO_BOOST_CMAKE=NO \
     -DBUILD_UNIT_TESTS=NO \
-    -DCMAKE_VERBOSE_MAKEFILE=NO
+    -DCMAKE_VERBOSE_MAKEFILE=NO         # very useful to flip over when debugging!
 
