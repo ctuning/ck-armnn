@@ -17,9 +17,9 @@
     }
   },
   "compiler_env": "CK_CXX",
-  "compiler_flags_as_env": "$<<CK_CXX_COMPILER_STDLIB>>$ $<<CK_COMPILER_FLAG_CPP14>>$",
+  "compiler_flags_as_env": "-fPIC $<<CK_CXX_COMPILER_STDLIB>>$ $<<CK_COMPILER_FLAG_CPP14>>$",
   "data_name": "simplesample", 
-  "extra_ld_vars": "-pie $<<CK_ENV_LIB_STDCPP_DYNAMIC>>$ $<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_BOOST_LIB>>$ -lboost_log -lboost_filesystem -lboost_atomic -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lboost_system -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn",
+  "extra_ld_vars": "-pie $<<CK_ENV_LIB_STDCPP_DYNAMIC>>$ $<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_BOOST_LIB>>$ -lboost_log -lboost_filesystem -lboost_atomic -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lboost_system -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn -pthread",
   "main_language": "cpp", 
   "only_for_target_os_tags": [
     "android",
