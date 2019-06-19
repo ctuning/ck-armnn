@@ -16,7 +16,7 @@ function exit_if_error() {
 if [ "$USE_TFLITE" == "YES" ] && [ "$PACKAGE_VERSION" == "19.05" ]
 then
     echo ""
-    echo "Copying 'libarmnnTfLiteParser.so' to '${INSTALL_DIR}/install/lib' ..."
-    cp ${INSTALL_DIR}/obj/libarmnnTfLiteParser.so ${INSTALL_DIR}/install/lib/
+    echo "Copying 'libarmnnTfLiteParser${CK_DLL_EXT}' to '${INSTALL_DIR}/install/lib' ..."
+    cp ${INSTALL_DIR}/obj/libarmnnTfLiteParser${CK_DLL_EXT} ${INSTALL_DIR}/install/lib/
     exit_if_error
 fi
