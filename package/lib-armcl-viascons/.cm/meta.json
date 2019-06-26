@@ -30,6 +30,9 @@
       "tags": "compiler,lang-cpp"
     },
     "standalone-toolchain": {
+      "enable_if_env": [
+        { "CK_TARGET_OS_ID": ["android"] }
+      ],
       "local": "yes",
       "name": "NDK standalone toolchain",
       "sort": 30,
