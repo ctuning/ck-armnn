@@ -23,10 +23,9 @@ function exit_if_error() {
 }
 
 echo ""
-echo "Building ArmNN package in $INSTALL_DIR :"
-echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
-echo "Frontends: USE_TF='${USE_TF}' , USE_TFLITE='${USE_TFLITE}' , USE_ONNX='${USE_ONNX}'"
-echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
+echo "Building ArmNN '${PACKAGE_VERSION}' in '${INSTALL_DIR}'."
+echo "Frontends: USE_TF='${USE_TF}'; USE_TFLITE='${USE_TFLITE}'; USE_ONNX='${USE_ONNX}'."
+echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'"
 echo ""
 
 ################ Frontend: ###########################################

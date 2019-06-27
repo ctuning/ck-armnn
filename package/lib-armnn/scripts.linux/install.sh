@@ -23,10 +23,9 @@ function exit_if_error() {
 }
 
 echo ""
-echo "Building ArmNN package in $INSTALL_DIR :"
-echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
-echo "Frontends: USE_TF='${USE_TF}' , USE_TFLITE='${USE_TFLITE}' , USE_ONNX='${USE_ONNX}'"
-echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
+echo "Building ArmNN '${PACKAGE_VERSION}' in '${INSTALL_DIR}'."
+echo "Frontends: USE_TF='${USE_TF}'; USE_TFLITE='${USE_TFLITE}'; USE_ONNX='${USE_ONNX}'."
+echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'."
 echo ""
 
 ################ Frontend: ###########################################
@@ -116,8 +115,8 @@ cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_AR="${CK_AR_PATH_FOR_CMAKE}" \
     -DCMAKE_RANLIB="${CK_RANLIB_PATH_FOR_CMAKE}" \
     -DCMAKE_LINKER="${CK_LD_PATH_FOR_CMAKE}" \
-    -DARMCOMPUTE_ROOT=${CK_ENV_LIB_ARMCL} \
-    -DARMCOMPUTE_BUILD_DIR=${CK_ENV_LIB_ARMCL}/build \
+    -DARMCOMPUTE_ROOT=${CK_ENV_LIB_ARMCL_SRC} \
+    -DARMCOMPUTE_BUILD_DIR=${CK_ENV_LIB_ARMCL_SRC}/build \
     -DBOOST_ROOT=${CK_ENV_LIB_BOOST} \
     -DPROTOBUF_ROOT=${CK_ENV_LIB_PROTOBUF_HOST} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
