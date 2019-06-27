@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #
-# See CK LICENSE for licensing details.
-# See CK COPYRIGHT for copyright details.
+# See CK LICENSE.txt for licensing details.
+# See CK COPYRIGHT.txt for copyright details.
 #
 # Developer(s):
 # - Leo Gordon, 2019
@@ -16,9 +16,8 @@ ARMCL_SOURCE_DIR=$INSTALL_DIR/$PACKAGE_SUB_DIR
 
 ############################################################
 echo ""
-echo "Building ArmCL package in ${INSTALL_DIR} using scons in ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads:"
-echo "PACKAGE_VERSION='${PACKAGE_VERSION}'"
-echo "Backends: USE_NEON='${USE_NEON}' and USE_OPENCL='${USE_OPENCL}'"
+echo "Building ArmCL v${PACKAGE_VERSION} in '${INSTALL_DIR}' using SCons with ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads."
+echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'."
 echo ""
 
 if [ "$USE_NEON" == "ON" ] || [ "$USE_NEON" == "on" ] || [ "$USE_NEON" == "YES" ] || [ "$USE_NEON" == "yes" ] || [ "$USE_NEON" == "1" ]
