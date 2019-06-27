@@ -16,7 +16,7 @@ ARMCL_SOURCE_DIR=$INSTALL_DIR/$PACKAGE_SUB_DIR
 
 ############################################################
 echo ""
-echo "Building ArmCL v${PACKAGE_VERSION} in '${INSTALL_DIR}' using SCons with ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads."
+echo "Building ArmCL '${PACKAGE_VERSION}' in '${INSTALL_DIR}' using SCons with ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads."
 echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'."
 echo ""
 
