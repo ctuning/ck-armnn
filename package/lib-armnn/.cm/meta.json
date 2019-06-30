@@ -16,7 +16,8 @@
       "USE_OPENCL": "NO",
       "USE_TF": "NO",
       "USE_TFLITE": "NO",
-      "USE_ONNX": "NO"
+      "USE_ONNX": "NO",
+      "CK_ARMNN_BUILD_TESTS": ""
     }, 
     "use_git_revision": "yes"
   }, 
@@ -206,6 +207,16 @@
     "onnx": {
         "extra_env": {
             "USE_ONNX": "YES"
+        }
+    },
+    "with_tests": {
+        "extra_env": {
+            "CK_ARMNN_BUILD_TESTS": "YES"
+        }
+    },
+    "without_tests": {
+        "extra_env": {
+            "CK_ARMNN_BUILD_TESTS": "NO"
         }
     }
   },

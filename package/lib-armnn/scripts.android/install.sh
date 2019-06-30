@@ -89,13 +89,11 @@ else
     CMAKE_FOR_OPENCL=""
 fi
 
-################ OSX's "native" LLVM support: ########################
+################ Default for Android is "NO": #######################
 
-if [ "$CK_DLL_EXT" == ".dylib" ] && [ -n "$CK_ENV_COMPILER_LLVM_SET" ]
+if [ "$CK_ARMNN_BUILD_TESTS" == "" ]
 then
-    UNIT_TESTS_REQUIRED="NO"
-else
-    UNIT_TESTS_REQUIRED="YES"
+    CK_ARMNN_BUILD_TESTS="NO"
 fi
 
 ############################################################
@@ -127,6 +125,6 @@ ${CK_ENV_TOOL_CMAKE_BIN}/cmake ${ARMNN_SOURCE_DIR} \
     -DPROTOBUF_ROOT=${CK_ENV_LIB_PROTOBUF} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
-    -DBUILD_UNIT_TESTS=NO \
+    -DBUILD_UNIT_TESTS=${CK_ARMNN_BUILD_TESTS} \
     -DCMAKE_VERBOSE_MAKEFILE=NO         # very useful to flip over when debugging!
 

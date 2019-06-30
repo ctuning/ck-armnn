@@ -93,9 +93,14 @@ fi
 
 if [ "$CK_DLL_EXT" == ".dylib" ] && [ -n "$CK_ENV_COMPILER_LLVM_SET" ]
 then
-    UNIT_TESTS_REQUIRED="NO"
-else
-    UNIT_TESTS_REQUIRED="YES"
+    CK_ARMNN_BUILD_TESTS="NO"
+fi
+
+################ Default for Linuxes is "YES": #######################
+
+if [ "$CK_ARMNN_BUILD_TESTS" == "" ]
+then
+    CK_ARMNN_BUILD_TESTS="YES"
 fi
 
 ############################################################
@@ -122,7 +127,7 @@ cmake ${ARMNN_SOURCE_DIR} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
     -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR} \
-    -DBUILD_UNIT_TESTS=${UNIT_TESTS_REQUIRED}
+    -DBUILD_UNIT_TESTS=${CK_ARMNN_BUILD_TESTS}
 
 exit_if_error
 
