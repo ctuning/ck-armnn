@@ -14,10 +14,22 @@
 
 ARMCL_SOURCE_DIR=$INSTALL_DIR/$PACKAGE_SUB_DIR
 
+# Configure target.
+MACHINE=$(uname -m)
+if [ "${MACHINE}" == "armv7l" ] || [ "${CK_TARGET_CPU_BITS}" == "32" ]; then
+    ARCH="armv7a"
+elif [ "${MACHINE}" == "aarch64" ]; then
+    ARCH="arm64-v8a"
+else
+    ARCH="arm64-v8a"
+    echo "Warning: Unknown machine type: ${MACHINE}."
+fi
+
 ############################################################
 echo ""
 echo "Building ArmCL '${PACKAGE_VERSION}' in '${INSTALL_DIR}' using SCons with ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-UndefinedNumberOf} threads."
 echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'."
+echo "Target: arch=${ARCH}."
 echo ""
 
 if [ "$USE_NEON" == "ON" ] || [ "$USE_NEON" == "on" ] || [ "$USE_NEON" == "YES" ] || [ "$USE_NEON" == "yes" ] || [ "$USE_NEON" == "1" ]
@@ -34,9 +46,10 @@ else
     ARMCL_SCONS_INTERNAL_OPENCL=""
 fi
 
+
 cd ${ARMCL_SOURCE_DIR}
 scons -j ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-1} \
-    arch=arm64-v8a \
+    arch=${ARCH} \
     extra_cxx_flags="-fPIC" \
     benchmark_tests=0 \
     validation_tests=0 \
