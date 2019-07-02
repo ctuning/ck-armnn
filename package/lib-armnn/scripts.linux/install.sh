@@ -26,6 +26,7 @@ echo ""
 echo "Building ArmNN '${PACKAGE_VERSION}' in '${INSTALL_DIR}'."
 echo "Frontends: USE_TF='${USE_TF}'; USE_TFLITE='${USE_TFLITE}'; USE_ONNX='${USE_ONNX}'."
 echo "Backends: USE_NEON='${USE_NEON}'; USE_OPENCL='${USE_OPENCL}'."
+echo "Extra flags: '${EXTRA_FLAGS}'"
 echo ""
 
 ################ Frontend: ###########################################
@@ -127,6 +128,7 @@ cmake ${ARMNN_SOURCE_DIR} \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
     -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR} \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=${CK_ARMNN_CMAKE_VERBOSE} \
     -DBUILD_UNIT_TESTS=${CK_ARMNN_BUILD_TESTS}
 
 exit_if_error
