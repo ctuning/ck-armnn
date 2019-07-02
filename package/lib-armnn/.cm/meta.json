@@ -17,6 +17,8 @@
       "USE_TF": "NO",
       "USE_TFLITE": "NO",
       "USE_ONNX": "NO",
+      "EXTRA_FLAGS": "-Werror",
+      "CK_ARMNN_CMAKE_VERBOSE": "OFF",
       "CK_ARMNN_BUILD_TESTS": ""
     }, 
     "use_git_revision": "yes"
