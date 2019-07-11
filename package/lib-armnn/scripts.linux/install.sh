@@ -92,7 +92,7 @@ fi
 
 ################ OSX's "native" LLVM support: ########################
 
-if [ "$CK_DLL_EXT" == ".dylib" ] && [ -n "$CK_ENV_COMPILER_LLVM_SET" ]
+if [ "$CK_DLL_EXT" == ".dylib" ] && [ -n "$CK_ENV_COMPILER_LLVM_SET" ] && [ "$CK_ARMNN_BUILD_TESTS" == "" ]
 then
     CK_ARMNN_BUILD_TESTS="NO"
 fi
