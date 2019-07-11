@@ -48,8 +48,8 @@ fi
 
 
 cd ${ARMCL_SOURCE_DIR}
-scons -j ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-1} \
-    arch=${ARCH} \
+CC=${CK_CC} CXX=${CK_CXX} scons -j ${CK_HOST_CPU_NUMBER_OF_PROCESSORS:-1} \
+    arch=${ARCH} toolchain_prefix=" " \
     extra_cxx_flags="-fPIC" \
     debug=0 asserts=0 \
     benchmark_tests=0 \
