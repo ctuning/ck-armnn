@@ -106,13 +106,14 @@ fi
 
 ############################################################
 echo ""
-echo "Running cmake for ArmNN ..."
+echo "=====[ Running the following cmake command line to build ArmNN: ]====="
 echo ""
 
 rm -rf "${ARMNN_BUILD_DIR}"
 mkdir ${ARMNN_BUILD_DIR}
 cd ${ARMNN_BUILD_DIR}
 
+read -d '' CMK_CMD <<EO_CMK_CMD
 cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_C_COMPILER="${CK_CC_PATH_FOR_CMAKE}" \
     -DCMAKE_C_FLAGS="${CK_CC_FLAGS_FOR_CMAKE} ${EXTRA_FLAGS}" \
@@ -121,15 +122,23 @@ cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_AR="${CK_AR_PATH_FOR_CMAKE}" \
     -DCMAKE_RANLIB="${CK_RANLIB_PATH_FOR_CMAKE}" \
     -DCMAKE_LINKER="${CK_LD_PATH_FOR_CMAKE}" \
-    -DARMCOMPUTE_ROOT=${CK_ENV_LIB_ARMCL_SRC} \
-    -DARMCOMPUTE_BUILD_DIR=${CK_ENV_LIB_ARMCL_SRC}/build \
-    -DBOOST_ROOT=${CK_ENV_LIB_BOOST} \
-    -DPROTOBUF_ROOT=${CK_ENV_LIB_PROTOBUF_HOST} \
+    -DARMCOMPUTE_ROOT="${CK_ENV_LIB_ARMCL_SRC}" \
+    -DARMCOMPUTE_BUILD_DIR="${CK_ENV_LIB_ARMCL_SRC}/build" \
+    -DBOOST_ROOT="${CK_ENV_LIB_BOOST}" \
+    -DPROTOBUF_ROOT="${CK_ENV_LIB_PROTOBUF_HOST}" \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
     ${CMAKE_FOR_NEON} ${CMAKE_FOR_OPENCL} \
-    -DCMAKE_INSTALL_PREFIX=${ARMNN_TARGET_DIR} \
-    -DCMAKE_VERBOSE_MAKEFILE:BOOL=${CK_ARMNN_CMAKE_VERBOSE} \
-    -DBUILD_UNIT_TESTS=${CK_ARMNN_BUILD_TESTS}
+    -DCMAKE_INSTALL_PREFIX="${ARMNN_TARGET_DIR}" \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL="${CK_ARMNN_CMAKE_VERBOSE}" \
+    -DBUILD_UNIT_TESTS="${CK_ARMNN_BUILD_TESTS}"
+EO_CMK_CMD
+
+# See the EXACT command we are about to run (with all interpolations that have not been specifically blocked) :
+echo $CMK_CMD
+echo ""
+
+# Now run it!
+eval $CMK_CMD
 
 exit_if_error
 
