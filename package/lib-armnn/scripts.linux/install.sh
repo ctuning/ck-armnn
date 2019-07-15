@@ -113,6 +113,19 @@ rm -rf "${ARMNN_BUILD_DIR}"
 mkdir ${ARMNN_BUILD_DIR}
 cd ${ARMNN_BUILD_DIR}
 
+#####################################################################################
+#
+# When using cmake to link a project, make sure to avoid "library path stripping"
+# by emptying $LIBRARY_PATH prior to running cmake:
+#
+#   https://cmake.org/pipermail/cmake/2011-June/044782.html
+#   https://github.com/ARM-software/armnn/issues/226
+#
+#####################################################################################
+export LIBRARY_PATH=
+echo "LIBRARY_PATH === ${LIBRARY_PATH}"
+echo "LD_LIBRARY_PATH === ${LD_LIBRARY_PATH}"
+
 read -d '' CMK_CMD <<EO_CMK_CMD
 cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_C_COMPILER="${CK_CC_PATH_FOR_CMAKE}" \
@@ -124,6 +137,8 @@ cmake ${ARMNN_SOURCE_DIR} \
     -DCMAKE_LINKER="${CK_LD_PATH_FOR_CMAKE}" \
     -DARMCOMPUTE_ROOT="${CK_ENV_LIB_ARMCL_SRC}" \
     -DARMCOMPUTE_BUILD_DIR="${CK_ENV_LIB_ARMCL_SRC}/build" \
+    -DBoost_NO_BOOST_CMAKE=TRUE \
+    -DBoost_NO_SYSTEM_PATHS=ON \
     -DBOOST_ROOT="${CK_ENV_LIB_BOOST}" \
     -DPROTOBUF_ROOT="${CK_ENV_LIB_PROTOBUF_HOST}" \
     ${CMAKE_FOR_TF} ${CMAKE_FOR_TFLITE} ${CMAKE_FOR_ONNX} \
