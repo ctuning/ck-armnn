@@ -7,6 +7,7 @@
       "PACKAGE_BUILD_TYPE": "skip", 
       "PACKAGE_GIT": "YES", 
       "PACKAGE_PATCH": "YES",
+      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch",
       "PACKAGE_SKIP_CLEAN_OBJ": "YES", 
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
@@ -183,6 +184,7 @@
     "dev": {
         "extra_env": {
             "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
+            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/*",
             "PACKAGE_VERSION": "dev"
         }
     },
