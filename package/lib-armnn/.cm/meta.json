@@ -150,6 +150,7 @@
   "variations": {
     "release": {
         "extra_env": {
+            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/install_tflite_parser.patch",
             "PACKAGE_VERSION": "release"
         }
     },
@@ -178,6 +179,7 @@
     "rel.19.05": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.05",
+            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/install_tflite_parser.patch",
             "PACKAGE_VERSION": "19.05"
         }
     },
