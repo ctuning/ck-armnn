@@ -7,7 +7,9 @@
       "PACKAGE_BUILD_TYPE": "skip", 
       "PACKAGE_GIT": "YES", 
       "PACKAGE_PATCH": "YES",
-      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch",
+      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__REMOVE_MALLOC>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__INSTALL_TFLITE_PARSER>>$",
+      "PACKAGE_PATCH__REMOVE_MALLOC": "malloc_to_stdlib.patch",
+      "PACKAGE_PATCH__INSTALL_TFLITE_PARSER": "",
       "PACKAGE_SKIP_CLEAN_OBJ": "YES", 
       "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES", 
       "PACKAGE_SUB_DIR": "src", 
@@ -150,7 +152,7 @@
   "variations": {
     "release": {
         "extra_env": {
-            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/install_tflite_parser.patch",
+            "PACKAGE_PATCH__INSTALL_TFLITE_PARSER": "install_tflite_parser.patch",
             "PACKAGE_VERSION": "release"
         }
     },
@@ -179,14 +181,14 @@
     "rel.19.05": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.05",
-            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/malloc_to_stdlib.patch \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/install_tflite_parser.patch",
+            "PACKAGE_PATCH__INSTALL_TFLITE_PARSER": "install_tflite_parser.patch",
             "PACKAGE_VERSION": "19.05"
         }
     },
     "dev": {
         "extra_env": {
             "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
-            "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/*",
+            "PACKAGE_PATCH__REMOVE_MALLOC": "",
             "PACKAGE_VERSION": "dev"
         }
     },
