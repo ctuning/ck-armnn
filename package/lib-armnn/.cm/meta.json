@@ -189,6 +189,7 @@
     "rel.19.08": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.08",
+            "PACKAGE_PATCH__REMOVE_MALLOC": "",
             "PACKAGE_VERSION": "19.08"
         }
     },
