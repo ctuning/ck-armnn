@@ -111,6 +111,7 @@
         "rel.18.11":    [ { "PACKAGE_VERSION": "18.11" } ],
         "rel.19.02":    [ { "PACKAGE_VERSION": "19.02" } ],
         "rel.19.05":    [ { "PACKAGE_VERSION": "19.05" } ],
+        "rel.19.08":    [ { "PACKAGE_VERSION": "19.08" } ],
         "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ],
@@ -183,6 +184,12 @@
             "PACKAGE_GIT_CHECKOUT": "v19.05",
             "PACKAGE_PATCH__INSTALL_TFLITE_PARSER": "install_tflite_parser.patch",
             "PACKAGE_VERSION": "19.05"
+        }
+    },
+    "rel.19.08": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v19.08",
+            "PACKAGE_VERSION": "19.08"
         }
     },
     "dev": {
