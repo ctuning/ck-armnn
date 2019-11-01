@@ -95,7 +95,7 @@
       "local": "yes", 
       "name": "Tensorflow source", 
       "sort": 30, 
-      "tags": "tensorflow,source"
+      "tags": "tensorflow,source,rel.1.15"
     },
     "lib-armcl-variation": {
       "enable_if_env": [
