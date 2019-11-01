@@ -132,6 +132,13 @@
       "name": "C++ compiler",
       "sort": 60,
       "tags": "compiler,lang-cpp"
+    },
+    "cmake": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake",
+      "sort": 70,
+      "tags": "cmake"
     }
   }, 
   "end_full_path_universal": "install$#sep#$lib$#sep#$libarmnn$#file_ext_dll#$",
