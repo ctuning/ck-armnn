@@ -1,7 +1,7 @@
 {
   "customize": {
-    "extra_dir": "", 
-    "git_src_dir": "src", 
+    "extra_dir": "",
+    "git_src_dir": "src",
     "install_env": {
       "ONNX_SRC_URL": "https://github.com/onnx/onnx.git",
       "PACKAGE_BUILD_TYPE": "skip", 
@@ -115,7 +115,7 @@
         "rel.19.05":    [ { "PACKAGE_VERSION": "19.05" } ],
         "rel.19.08":    [ { "PACKAGE_VERSION": "19.08" } ],
         "rel.20.05":    [ { "PACKAGE_VERSION": "20.05" } ],
-	"release":      [ { "PACKAGE_VERSION": "release" } ],
+        "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ],
         "opencl":       [ { "USE_OPENCL": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ]
@@ -143,23 +143,23 @@
       "sort": 70,
       "tags": "cmake"
     }
-  }, 
+  },
   "end_full_path_universal": "install$#sep#$lib$#sep#$libarmnn$#file_ext_dll#$",
-  "need_cpu_info": "yes", 
+  "need_cpu_info": "yes",
   "only_for_host_os_tags": [
     "linux"
-  ], 
+  ],
   "only_for_target_os_tags": [
     "linux",
     "android"
-  ], 
-  "process_script": "install", 
-  "soft_uoa": "lib.armnn", 
-  "suggested_path": "lib-armnn", 
+  ],
+  "process_script": "install",
+  "soft_uoa": "lib.armnn",
+  "suggested_path": "lib-armnn",
   "tags": [
-    "lib", 
+    "lib",
     "armnn"
-  ], 
+  ],
   "variations": {
     "release": {
         "extra_env": {
@@ -188,7 +188,8 @@
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.02",
             "PACKAGE_VERSION": "19.02",
-            "PACKAGE_PATCH__REL_18_08__REMOVE_MALLOC": "rel.18.08_malloc-to-stdlib.patch"
+            "PACKAGE_PATCH__REL_18_08__REMOVE_MALLOC": "rel.18.08_malloc-to-stdlib.patch",
+            "ONNX_BRANCH": "--branch rel-1.6.0"
         }
     },
     "rel.19.05": {
@@ -196,28 +197,33 @@
             "PACKAGE_GIT_CHECKOUT": "v19.05",
             "PACKAGE_VERSION": "19.05",
             "PACKAGE_PATCH__REL_18_08__REMOVE_MALLOC": "rel.18.08_malloc-to-stdlib.patch",
-            "PACKAGE_PATCH__REL_19_05__INSTALL_TFLITE_PARSER": "rel.19.05_install-tflite-parser.patch"
+            "PACKAGE_PATCH__REL_19_05__INSTALL_TFLITE_PARSER": "rel.19.05_install-tflite-parser.patch",
+            "ONNX_BRANCH": "--branch rel-1.6.0"
         }
     },
     "rel.19.08": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v19.08",
             "PACKAGE_PATCH__REL_19_08__NO_WERROR": "rel.19.08_no-werror.patch",
-            "PACKAGE_VERSION": "19.08"
+            "PACKAGE_VERSION": "19.08",
+            "ONNX_BRANCH": "--branch rel-1.6.0"
         }
     },
     "rel.20.05": {
         "extra_env": {
             "PACKAGE_GIT_CHECKOUT": "v20.05",
             "PACKAGE_PATCH__REL_20_05__NO_WERROR": "rel.20.05_no-werror.patch",
-            "PACKAGE_VERSION": "20.05"
+            "PACKAGE_VERSION": "20.05",
+            "ONNX_BRANCH": "--branch rel-1.6.0"
         }
     },
     "dev": {
         "extra_env": {
             "PACKAGE_URL": "https://review.mlplatform.org/ml/armnn",
             "PACKAGE_PATCH__REL_20_05__NO_WERROR": "rel.20.05_no-werror.patch",
-            "PACKAGE_VERSION": "dev"
+            "PACKAGE_VERSION": "dev",
+            "ONNX_BRANCH": "--branch rel-1.7.0",
+            "ONNX_BRANCH_comment": "Deliberately setting a different ONNX branch from rel.20.05 as it seems to fail"
         }
     },
     "neon": {
@@ -261,7 +267,7 @@
     "module_uoa": "script"
   },
   "use_scripts_from_another_entry": {
-    "data_uoa": "download-and-install-package", 
+    "data_uoa": "download-and-install-package",
     "module_uoa": "script"
   }
 }
