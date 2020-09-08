@@ -116,6 +116,7 @@
         "rel.19.05":    [ { "PACKAGE_VERSION": "19.05" } ],
         "rel.19.08":    [ { "PACKAGE_VERSION": "19.08" } ],
         "rel.20.05":    [ { "PACKAGE_VERSION": "20.05" } ],
+        "rel.20.08":    [ { "PACKAGE_VERSION": "20.08" } ],
         "release":      [ { "PACKAGE_VERSION": "release" } ],
         "dev":          [ { "PACKAGE_VERSION": "dev" } ],
         "neon":         [ { "USE_NEON":   ["on", "ON", "yes", "YES", "true", "TRUE", "1"] } ],
@@ -216,6 +217,13 @@
             "PACKAGE_PATCH__REL_20_05__NO_WERROR": "rel.20.05_no-werror.patch",
             "PACKAGE_PATCH__REL_20_05__HARDSWISH": "rel.20.05_hardswish.patch",
             "PACKAGE_VERSION": "20.05",
+            "ONNX_BRANCH": "--branch rel-1.6.0"
+        }
+    },
+    "rel.20.08": {
+        "extra_env": {
+            "PACKAGE_GIT_CHECKOUT": "v20.08",
+            "PACKAGE_VERSION": "20.08",
             "ONNX_BRANCH": "--branch rel-1.6.0"
         }
     },
