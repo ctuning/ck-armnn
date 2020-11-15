@@ -1,3 +1,5 @@
+**All CK components for AI and ML are now collected in [one repository](https://github.com/ctuning/ai)!**
+
 [![Travis Build Status](https://travis-ci.org/ctuning/ck-armnn.svg?branch=master)](https://travis-ci.org/ctuning/ck-armnn)
 
 # ArmNN installation
