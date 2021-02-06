@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 **All CK components can be found at [cKnowledge.io](https://cKnowledge.io) and in [one GitHub repository](https://github.com/ctuning/ai)!**
 
 *This project is hosted by the [cTuning foundation](https://cTuning.org).*
+=======
+**All CK components for AI and ML are now collected in [one repository](https://github.com/ctuning/ai)!**
+>>>>>>> 0ca2d121c176bd93200f449e94b9c713a7daafb8
 
 [![Travis Build Status](https://travis-ci.org/ctuning/ck-armnn.svg?branch=master)](https://travis-ci.org/ctuning/ck-armnn)
 
