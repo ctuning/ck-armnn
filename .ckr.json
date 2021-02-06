@@ -1,11 +1,9 @@
 {
-  "data_uoa": "ck-armnn",
-  "data_uid": "6b043a091334106b",
   "data_alias": "ck-armnn",
   "data_name": "ck-armnn",
+  "data_uid": "6b043a091334106b",
+  "data_uoa": "ck-armnn",
   "dict": {
-    "shared": "git",
-    "url": "https://github.com/ctuning/ck-armnn.git",
     "repo_deps": [
       {
         "repo_uoa": "ck-math"
@@ -13,6 +11,8 @@
       {
         "repo_uoa": "ck-tensorflow"
       }
-    ]
+    ],
+    "shared": "git",
+    "url": "https://github.com/ctuning/ck-armnn"
   }
 }

@@ -1,3 +1,7 @@
+**All CK components can be found at [cKnowledge.io](https://cKnowledge.io) and in [one GitHub repository](https://github.com/ctuning/ai)!**
+
+*This project is hosted by the [cTuning foundation](https://cTuning.org).*
+
 [![Travis Build Status](https://travis-ci.org/ctuning/ck-armnn.svg?branch=master)](https://travis-ci.org/ctuning/ck-armnn)
 
 # ArmNN installation
